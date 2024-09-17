@@ -1,0 +1,62 @@
+---
+import { IconDorsalLogo } from "@lib/Icons";
+---
+
+<header>
+  <IconDorsalLogo />
+  <h1>Shar<span>kit</span></h1>
+</header>
+
+<style>
+  header {
+    max-width: var(--max-width-content);
+    box-sizing: border-box;
+    position: relative;
+    padding-block: 35px;
+    padding-inline: 15px;
+    margin-inline: auto;
+    margin-block: 30px;
+  }
+
+  svg {
+    position: absolute;
+    height: 160px;
+    width: auto;
+    top: 0;
+    left: 50%;
+    transform: translatex(-50%);
+    z-index: -1;
+    overflow: visible;
+    path:first-of-type{
+      filter: drop-shadow(0 0 10px rgb(var(--accent-light)));
+    }
+    path:last-of-type{
+      filter: drop-shadow(0 0 10px rgb(var(--accent-secondary)));
+    }
+  }
+
+  h1 {
+    font-family: ArchivoBlack, system-ui, sans-serif;
+    font-size: 60px;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    letter-spacing: 5px;
+    transform: skewX(-20deg);
+    margin: 0;
+  }
+
+  span {
+    --span-gradient: linear-gradient(
+      130deg,
+      transparent,
+      rgb(var(--accent-light)) 25%,
+      rgb(var(--accent-secondary)) 45%,
+      rgb(var(--accent)) 75%
+    );
+    color: transparent;
+    background-image: var(--span-gradient);
+    background-clip: text;
+    background-color: rgb(var(--font-color));
+  }
+</style>

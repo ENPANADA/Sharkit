@@ -1,0 +1,56 @@
+---
+import Template from "@layouts/Component.astro";
+import OTP from "@components/OTP.astro";
+import { Toaster } from "@lib/Toasts";
+---
+
+<Template>
+  <Toaster client:idle />
+  <h3>One Time Password</h3>
+  <OTP />
+</Template>
+
+<script>
+  const html = document.querySelector("article")!;
+
+  html.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.ctrlKey || e.altKey) return;
+    const input = e.target as HTMLInputElement;
+    const previous = input.previousElementSibling as HTMLInputElement;
+    const next = input.nextElementSibling as HTMLInputElement;
+    const regex = RegExp(`^${input.pattern}$`) as RegExp;
+    if (
+      regex.test(e.key) ||
+      e.code === "Backspace" ||
+      e.code === "Delete" ||
+      e.code === "ArrowLeft" ||
+      e.code === "ArrowRight"
+    ) {
+      if (!(e.code === "ArrowLeft" || e.code === "ArrowRight")) {
+        input.value =
+          e.code === "Backspace" || e.code === "Delete" ? "" : e.key;
+      }
+      e.code === "Backspace" || e.code === "ArrowLeft"
+        ? previous?.focus()
+        : next?.focus();
+      e.preventDefault();
+    }
+  });
+
+  html.addEventListener("paste", (e: ClipboardEvent) => {
+    const trigger = e.target as HTMLInputElement;
+    const parent = trigger.parentElement as HTMLElement;
+    const code = e.clipboardData
+      ?.getData("text")
+      .split("", parent.childElementCount) as string[];
+    let child = parent.firstElementChild as HTMLInputElement;
+    let regex: RegExp;
+    code.forEach((char: string) => {
+      regex = RegExp(`^${child.pattern}$`);
+      child.value = regex.test(char) ? char : "";
+      child = child.nextElementSibling as HTMLInputElement;
+      child?.focus();
+    });
+    e.preventDefault();
+  });
+</script>

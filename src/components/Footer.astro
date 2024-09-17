@@ -1,0 +1,214 @@
+---
+import { IconGitHub, Wave } from "@lib/Icons";
+import { svgToDataUrl } from "@utils/IconsService";
+import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL } from "@config/routes";
+
+const wave = svgToDataUrl(Wave, { fill: "#08001e" });
+---
+
+<footer>
+  <div>
+    <article>
+      <section>
+        <h3>Sharkit</h3>
+        <span
+          >by&nbsp;
+          <a href={ENPANADA_URL} target="_blank">
+            ENPANADA<IconGitHub />
+          </a>
+        </span>
+      </section>
+      <hr />
+      <section>
+        <aside>
+          <h4>Explore</h4>
+          <ul>
+            <li><a href={HOME_URL}>Home</a></li>
+            <li><a href={HOME_COMPONENT_URL}>Components</a></li>
+            <li><a href="#">Backgrounds</a></li>
+          </ul>
+        </aside>
+        <aside>
+          <h4>Follow</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">dfgd</a></li>
+          </ul>
+        </aside>
+      </section>
+    </article>
+    <hr class="hr" />
+    <p>Copyright 2024&copy; - All Rights Reserved</p>
+  </div>
+</footer>
+
+<style define:vars={{ wave }}>
+  footer {
+    margin-top: 30px;
+    background-color: rgb(var(--bg-dark));
+    padding: 25px 15px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset-inline: 0;
+      bottom: 50%;
+      height: 80%;
+      background-image: var(--wave);
+      background-size: 200px 100%;
+      z-index: -1;
+      animation: wave 10s infinite linear;
+      animation-play-state: paused;
+    }
+
+    &:hover {
+      &::before {
+        animation-play-state: running;
+      }
+    }
+  }
+
+  div {
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+
+    & > hr {
+      border: 0;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgb(var(--accent)),
+        rgb(var(--accent-secondary)),
+        transparent
+      );
+    }
+  }
+
+  article {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+
+    hr {
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        transparent,
+        rgb(var(--accent)),
+        rgb(var(--accent-secondary)),
+        transparent
+      );
+      border: none;
+      margin: 0;
+    }
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 40px;
+    font-family: ArchivoBlack;
+    letter-spacing: -2px;
+    line-height: 1;
+  }
+
+  span {
+    font-size: 15px;
+    color: rgb(var(--font-secondary-color));
+  }
+
+  a {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease-out;
+
+    svg {
+      transition: color;
+    }
+
+    &:hover {
+      color: rgb(var(--accent-secondary));
+    }
+  }
+
+  section:last-of-type {
+    display: inline-flex;
+    gap: 20px;
+    text-align: end;
+
+    h4 {
+      margin: 0;
+      font-size: 18px;
+      font-family: ArchivoBlack;
+      letter-spacing: 2px;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    a {
+      display: inline-block;
+      color: inherit;
+      text-decoration: none;
+      margin-block: 3px;
+      padding: 2px 5px;
+      font-size: 13px;
+      letter-spacing: 2px;
+      position: relative;
+      transition: background-color 0.2s ease-out;
+
+      &::before {
+        content: "";
+        background-color: rgb(var(--accent-light));
+        position: absolute;
+        inset-inline: 100% 0;
+        top: 0;
+        height: 1px;
+        transition: left 0.2s;
+      }
+
+      &::after {
+        content: "";
+        background-color: rgb(var(--accent-light));
+        position: absolute;
+        inset-inline: 0 100%;
+        bottom: 0;
+        height: 1px;
+        transition: right 0.2s;
+      }
+
+      &:hover {
+        background-color: rgb(var(--accent-dark));
+
+        &::before {
+          left: 0;
+        }
+
+        &::after {
+          right: 0;
+        }
+      }
+    }
+  }
+
+  p {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 13px;
+    color: rgb(var(--font-secondary-color));
+  }
+
+  @keyframes wave {
+    to {
+      background-position: 200px;
+    }
+  }
+</style>

@@ -1,0 +1,71 @@
+---
+import Layout from "@layouts/Layout1.astro";
+import CodeBlock from "@components/CodeBlock.astro";
+import Navigation from "@components/Navigation.astro";
+import {
+  getComponentDataByLink,
+  getPreviousAndNextComponentsDataByIndex,
+} from "@utils/CollectionsService";
+
+const codes = await Astro.glob("@data/codes/**/*.md");
+const [data, index] = getComponentDataByLink(
+  Astro.url.pathname.split("/").at(-1) as string
+);
+const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
+---
+
+<Layout>
+  <article>
+    <slot />
+    <h3>Code</h3>
+    <section>
+      {
+        () => {
+          if (data) {
+            return (
+              <CodeBlock {data}>
+                {codes.map((code) => {
+                  if (code.file.split("/").includes(data.link)) {
+                    return (
+                      <div>
+                        <code.default />
+                      </div>
+                    );
+                  }
+                })}
+              </CodeBlock>
+            );
+          }
+        }
+      }
+    </section>
+    <slot name="after" />
+    <Navigation {previous} {next} />
+  </article>
+</Layout>
+
+<style>
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+
+    section {
+      background: var(--bg-gradient);
+      box-shadow: rgb(var(--bg-dark)) 6px 6px 12px;
+      border-radius: 15px;
+      padding: 15px;
+    }
+
+    h3 {
+      margin: 0;
+      align-self: flex-start;
+      background: var(--accent-gradient);
+      background-clip: text;
+      color: transparent;
+      font-size: 25px;
+      font-family: ArchivoBlack;
+    }
+  }
+</style>

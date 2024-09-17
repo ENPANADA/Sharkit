@@ -1,0 +1,118 @@
+---
+import { IconDorsalLogo } from "@lib/Icons";
+import { svgToData } from "@utils/IconsService";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Sharkit" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href={svgToData(IconDorsalLogo, {stroke: "#e0ccfa", strokeWidth: "12px"})} />
+    <meta name="generator" content={Astro.generator} />
+    <title>Sharkit</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --max-width-content: 800px;
+    --font-color: 230 230 230;
+    --font-secondary-color: 160 160 160;
+    --bg: 19 21 26;
+    --bg-light: 30 32 43;
+    --bg-dark: 8 0 30;
+    --accent: 136 58 234;
+    --accent-secondary: 102 51 238;
+    --accent-light: 224 204 250;
+    --accent-dark: 49 10 101;
+    --accent-gradient: linear-gradient(
+      15deg,
+      rgb(var(--accent-secondary)),
+      rgb(var(--accent)) 30%,
+      rgb(var(--accent-light)) 90%
+    );
+    --gradient-linear: linear-gradient(
+      50deg,
+      rgb(var(--bg-dark)),
+      rgb(var(--accent-dark)),
+      rgb(var(--bg-dark))
+    );
+    --gradient-linear-2: linear-gradient(
+      45deg,
+      rgb(var(--accent-dark)) 20%,
+      rgb(var(--accent)),
+      rgb(var(--accent-dark)) 80%
+    );
+    --gradient-linear-blur: linear-gradient(
+      45deg,
+      rgb(var(--accent-secondary)),
+      rgb(var(--bg-dark)),
+      rgb(var(--accent-dark)),
+      rgb(var(--accent))
+    );
+    --accent-border-gradient-rotate: conic-gradient(
+      transparent 60deg,
+      rgb(var(--accent)) 240deg,
+      rgb(var(--accent-secondary)) 320deg
+    );
+    --bg-gradient: linear-gradient(42deg, #160024 25%, #001925 75%);
+  }
+
+  @font-face {
+    font-family: "ArchivoBlack";
+    src: url("/fonts/ArchivoBlack-Regular.ttf") format("woff2");
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto-Regular.ttf") format("woff2");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto-Light.ttf") format("woff2");
+    font-weight: light;
+    font-style: normal;
+    font-display: swap;
+  }
+  
+  @font-face {
+    font-family: "Roboto";
+    src: url("/fonts/Roboto-Bold.ttf") format("woff2");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *::selection {
+    background-color: rgb(var(--accent-secondary));
+    color: rgb(var(--accent-light));
+  }
+
+  html {
+    font-family: Roboto, system-ui, sans-serif;
+    color: rgb(var(--font-color));
+    background: radial-gradient(
+      125% 125% at 50% 10%,
+      rgb(var(--bg-dark)),
+      #000 40%,
+      rgb(var(--accent-secondary)) 100%
+    );
+    background-repeat: no-repeat;
+    min-width: 100%;
+    min-height: 100vh;
+    scroll-behavior: smooth;
+  }
+
+  body{
+    margin: 0;
+  }
+</style>

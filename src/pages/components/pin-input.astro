@@ -1,0 +1,310 @@
+---
+import Template from "@layouts/Component.astro";
+import Pininput from "@components/PinInput.astro";
+import OTP from "@components/OTP.astro";
+import { Toaster } from "@lib/Toasts";
+---
+
+<Template>
+  <Toaster client:idle />
+  <h3>Pin Input</h3>
+  <section>
+    <Pininput />
+  </section>
+  <aside>
+    <h3>Shortcuts</h3>
+    <fieldset>
+      <legend>Clear</legend>
+      <div>
+        <span>&lharu; Previous</span>
+        <small
+          >Backspace: <kbd id="backspace" title="Backspace key">&xlarr;</kbd
+          ></small
+        >
+      </div>
+      <div>
+        <span>Next &rharu;</span>
+        <small>Delete: <kbd id="delete" title="Delete key">supr</kbd></small>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Navigate</legend>
+      <div>
+        <span>&lhard; Previous</span>
+        <small
+          >Arrow left: <kbd id="arrowleft" title="Arrow left key">&larr;</kbd
+          ></small
+        >
+        <small>Tab: <kbd id="tab" title="Tab key">&#8633;</kbd></small>
+      </div>
+      <div>
+        <span>Next &rhard;</span>
+        <small
+          >Arrow right: <kbd id="arrowright" title="Arrow right key">&rarr;</kbd
+          ></small
+        >
+        <small
+          >Reverse Tab: <kbd id="reversetab" title="Tab key">&#8633;</kbd> + <kbd
+            id="shift"
+            title="Shift key">&#8679;</kbd
+          ></small
+        >
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Paste</legend>
+      <small>Clipboard:</small>
+      <span>
+        <kbd id="ctrl" title="Control key">ctrl</kbd> + <kbd
+          id="keyv"
+          title="V key">v</kbd
+        >
+      </span>
+    </fieldset>
+  </aside>
+  <h3>Specific patterns</h3>
+  <section>
+    <h4>Only numbers</h4>
+    <Pininput length={3} regexp="0-9" />
+  </section>
+  <section>
+    <h4>Only lowercase</h4>
+    <Pininput length={4} regexp="a-z" />
+  </section>
+  <section>
+    <h4>Only uppercase</h4>
+    <Pininput length={5} regexp="A-Z" />
+  </section>
+  <Fragment slot="after">
+    <h3>Example OTP</h3>
+    <OTP />
+  </Fragment>
+</Template>
+
+<style>
+  section {
+    &:first-of-type {
+      position: relative;
+      padding: 1px;
+      background: none;
+      overflow: hidden;
+      border-radius: 10px;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: -175%;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        background: var(--accent-border-gradient-rotate);
+        z-index: -1;
+        border-radius: 100%;
+        transform: rotate(0deg) scale(1.05);
+        animation: rotate-border-gradient 5s infinite linear;
+      }
+
+      aside {
+        background: var(--bg-gradient);
+        padding: 1rem;
+        border-radius: 10px;
+      }
+    }
+
+    h4 + aside {
+      padding: 5px;
+    }
+
+    h4 {
+      margin: 0;
+      text-align: center;
+      color: rgb(var(--accent-light));
+      font-size: 1rem;
+
+      &::after {
+        display: block;
+        content: "0-9";
+        background: var(--accent-gradient);
+        color: rgb(var(--bg-dark));
+        width: max-content;
+        margin: 10px auto;
+        padding: 0 5px;
+        padding-left: 8px;
+        border-radius: 5px;
+        letter-spacing: 3px;
+        text-align: end;
+      }
+    }
+
+    &:nth-of-type(3) {
+      h4 {
+        &::after {
+          content: "a-z";
+        }
+      }
+    }
+
+    &:nth-of-type(4) {
+      h4 {
+        &::after {
+          content: "A-Z";
+        }
+      }
+    }
+  }
+
+  aside {
+    background: var(--bg-gradient);
+    border-radius: 15px;
+    padding: 15px;
+
+    h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    fieldset {
+      border: 1px solid;
+      border-image: var(--accent-gradient) 1;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      text-align: center;
+      background-color: rgba(0 0 0 / 0.2);
+
+      legend {
+        text-shadow: 3px 3px 4px rgb(var(--accent));
+        padding: 0px 10px;
+      }
+
+      div {
+        width: 150px;
+        text-align: end;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        align-items: flex-end;
+
+        &:nth-of-type(2) {
+          align-items: flex-start;
+          text-align: start;
+        }
+      }
+
+      kbd {
+        display: inline-block;
+        border-width: 1px 1px 3px;
+        border-style: solid;
+        border-color: rgb(var(--accent-secondary));
+        background-color: rgb(var(--bg-dark));
+        border-radius: 6px;
+        padding: 2px 7px;
+        white-space: nowrap;
+        font-size: 15px;
+        color: rgb(var(--accent-light));
+        user-select: none;
+
+        &:hover {
+          background-image: var(--accent-gradient);
+        }
+      }
+
+      span {
+        color: rgb(var(--accent-light));
+      }
+    }
+  }
+
+  @keyframes rotate-border-gradient {
+    to {
+      transform: rotate(360deg) scale(1.05);
+    }
+  }
+</style>
+
+<script>
+  declare global {
+    interface Window {
+      backspace: HTMLElement;
+      delete: HTMLElement;
+      arrowleft: HTMLElement;
+      arrowright: HTMLElement;
+      tab: HTMLElement;
+      reversetab: HTMLElement;
+      shift: HTMLElement;
+      ctrl: HTMLElement;
+      keyv: HTMLElement;
+    }
+  }
+
+  const handleShortcut = (shortcut: string, isComposed: boolean) => {
+    type Key = HTMLElement | undefined;
+    let kbd!: Key, kbdE!: Key;
+
+    const shortcutMap: { [key: string]: HTMLElement[] } = {
+      Backspace: [window.backspace],
+      Delete: [window.delete],
+      ArrowLeft: [window.arrowleft],
+      ArrowRight: [window.arrowright],
+      Tab: isComposed ? [window.reversetab, window.shift] : [window.tab],
+      paste: [window.ctrl, window.keyv],
+    };
+
+    [kbd, kbdE] = shortcutMap[shortcut] || [];
+
+    if (kbd) {
+      kbd.style.backgroundImage = isComposed
+        ? (kbdE!.style.backgroundImage = "var(--accent-gradient)")
+        : "var(--accent-gradient)";
+      setTimeout(() => {
+        kbd.style.backgroundImage = isComposed
+          ? (kbdE!.style.backgroundImage = "")
+          : "";
+      }, 150);
+    }
+  };
+
+  const html = document.querySelector("article")!;
+
+  html.addEventListener("keydown", (e: KeyboardEvent) => {
+    if (e.ctrlKey || e.altKey) return;
+    const input = e.target as HTMLInputElement;
+    const previous = input.previousElementSibling as HTMLInputElement;
+    const next = input.nextElementSibling as HTMLInputElement;
+    const regex = RegExp(`^${input.pattern}$`) as RegExp;
+    if (
+      regex.test(e.key) ||
+      e.code === "Backspace" ||
+      e.code === "Delete" ||
+      e.code === "ArrowLeft" ||
+      e.code === "ArrowRight"
+    ) {
+      if (!(e.code === "ArrowLeft" || e.code === "ArrowRight")) {
+        input.value =
+          e.code === "Backspace" || e.code === "Delete" ? "" : e.key;
+      }
+      e.code === "Backspace" || e.code === "ArrowLeft"
+        ? previous?.focus()
+        : next?.focus();
+      e.preventDefault();
+    }
+    handleShortcut(e.code, e.shiftKey);
+  });
+
+  html.addEventListener("paste", (e: ClipboardEvent) => {
+    const trigger = e.target as HTMLInputElement;
+    const parent = trigger.parentElement as HTMLElement;
+    const code = e.clipboardData
+      ?.getData("text")
+      .split("", parent.childElementCount) as string[];
+    let child = parent.firstElementChild as HTMLInputElement;
+    let regex: RegExp;
+    code.forEach((char: string) => {
+      regex = RegExp(`^${child.pattern}$`);
+      child.value = regex.test(char) ? char : "";
+      child = child.nextElementSibling as HTMLInputElement;
+      child?.focus();
+    });
+    e.preventDefault();
+    handleShortcut(e.type, e.composed);
+  });
+</script>

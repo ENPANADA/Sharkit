@@ -1,0 +1,79 @@
+---
+interface Props {
+  length?: number;
+  regexp?: string;
+}
+
+const { length = 6, regexp = "a-zA-Z0-9" } = Astro.props;
+const inputs = Array.from({ length }, (_, index) => index);
+---
+
+<aside>
+  {
+    inputs.map((i) => (
+      <input
+        type="text"
+        placeholder="_"
+        name={"code-" + i}
+        pattern={`[${regexp}]`}
+        maxlength="0"
+        required
+        autofocus={i === 0 ? true : undefined}
+      />
+    ))
+  }
+</aside>
+
+<style>
+  aside {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+
+    input {
+      width: 1.1rem;
+      padding: 0.4rem 0.7rem;
+      border-radius: 0.2rem 0.2rem 0 0;
+      border: none;
+      border-bottom: solid 0.2rem rgb(var(--accent));
+      text-align: center;
+      font-size: 1.2rem;
+      font-weight: bold;
+      background-color: transparent;
+      color: rgb(var(--font-color));
+      caret-color: rgb(var(--accent));
+      transition:
+        transform 0.2s,
+        border-bottom-color 0.2s,
+        background-color 0.5s;
+      cursor: default;
+
+      &:focus {
+        outline: none;
+        border-bottom-color: rgb(var(--accent-light));
+        animation: border-bottom-pulse 1s infinite 1.5s;
+      }
+
+      &::placeholder {
+        color: rgb(var(--accent-light));
+        opacity: 0.8;
+      }
+
+      &:focus::placeholder {
+        opacity: 0;
+      }
+
+      &:hover {
+        transform: translateY(-3px);
+        background-color: rgb(var(--accent-dark));
+      }
+    }
+  }
+
+  @keyframes border-bottom-pulse {
+    50% {
+      border-bottom-color: rgb(var(--accent));
+    }
+  }
+</style>

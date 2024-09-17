@@ -1,0 +1,260 @@
+---
+import type { Component } from "@type/collection";
+import { CODEOPENIO_BASE_URL, CODILINK_BASE_URL } from "@config/routes";
+import { getIconLangByName as IconLang } from "@utils/IconsService";
+import {
+  IconCodiLink,
+  IconCodePenIo,
+  IconArrowSquareUpRight,
+} from "@lib/Icons";
+
+interface Props {
+  data: Component;
+}
+
+const { data } = Astro.props;
+---
+
+<figure>
+  <aside>
+    <slot />
+  </aside>
+  <div>
+    <span>
+      {
+        data.code.langs.map((lang, i) => (
+          <input
+            type="radio"
+            name="langs"
+            id={"lang-" + lang}
+            checked={i === 0 ? true : undefined}
+          />
+        ))
+      }
+    </span>
+  </div>
+  <nav>
+    <div>
+      <a href={CODEOPENIO_BASE_URL + data.code.opencodeio} target="_blank">
+        <IconCodePenIo />Try<IconArrowSquareUpRight />
+      </a>
+      <a href={CODILINK_BASE_URL + data.code.codilink} target="_blank">
+        <IconCodiLink />Try<IconArrowSquareUpRight />
+      </a>
+    </div>
+    <div>
+      {
+        data.code.langs.map((lang) => (
+          <label for={"lang-" + lang}>
+            {lang.toUpperCase()}
+            <IconLang name={lang} />
+          </label>
+        ))
+      }
+    </div>
+  </nav>
+</figure>
+
+<style>
+  figure {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+    max-width: var(--max-width-content);
+
+    & > div {
+      position: absolute;
+      bottom: 65px;
+      display: flex;
+      justify-content: center;
+      margin: 0 10px;
+      width: calc(100% - 20px);
+
+      span {
+        background-color: rgba(116, 116, 116, 0.1);
+        padding: 7px 12px;
+        border-radius: 10px;
+        display: inline-flex;
+        gap: 4px;
+        backdrop-filter: blur(1px);
+      }
+
+      input {
+        appearance: none;
+        background-color: rgb(var(--accent-dark));
+        margin: 0;
+        width: 10px;
+        height: 10px;
+        border: 1px solid rgb(var(--accent-secondary));
+        border-radius: 10px;
+        transition:
+          width 0.2s ease,
+          background-color 0.4s ease-out,
+          border-color 0.4s ease-out;
+        cursor: pointer;
+
+        &:hover {
+          border-color: rgb(var(--accent-light));
+        }
+
+        &:checked {
+          cursor: default;
+          width: 50px;
+          border-color: rgb(var(--accent));
+          background: var(--gradient-linear-2);
+          background-size: 200% 100%;
+          animation: translate-background 3s ease infinite;
+        }
+      }
+    }
+
+    &:has(span input:first-of-type:checked) {
+      nav div label:first-of-type {
+        background-color: rgb(var(--accent-dark));
+        text-shadow: 1px 1px 3px rgb(var(--accent-light));
+      }
+    }
+
+    &:has(span input:nth-child(2):checked) {
+      aside {
+        transform: translateX(-100%);
+      }
+      nav div label:nth-of-type(2) {
+        background-color: rgb(var(--accent-dark));
+        text-shadow: 1px 1px 3px rgb(var(--accent-light));
+      }
+    }
+
+    &:has(span input:nth-child(3):checked) {
+      aside {
+        transform: translateX(-200%);
+      }
+      nav div label:nth-of-type(3) {
+        background-color: rgb(var(--accent-dark));
+        text-shadow: 1px 1px 3px rgb(var(--accent-light));
+      }
+    }
+  }
+
+  aside {
+    display: flex;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 5px 0;
+    transition: transform 0.4s ease-in-out;
+    max-height: 500px;
+
+    div {
+      scroll-snap-align: center;
+      flex: 1 0 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding: 0 10px;
+      box-sizing: border-box;
+
+      h2 {
+        margin: 0;
+        font-size: 20px;
+        letter-spacing: 5px;
+        align-self: center;
+        text-shadow: 3px 3px 4px rgb(var(--accent));
+      }
+
+      pre {
+        flex: 1;
+        padding: 12px;
+        outline: none;
+        border: 1px solid;
+        border-image: var(--accent-gradient) 1;
+        margin: 0;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          border-radius: 6px 0 0 6px;
+          background-color: rgb(49, 49, 49);
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background-image: var(--accent-gradient);
+          box-shadow: 0 0 10px rgb(var(--bg-dark));
+          border-radius: 6px 0 0 6px;
+          cursor: grab;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+          cursor: grabbing;
+        }
+      }
+    }
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    padding: 0 10px;
+
+    div {
+      display: flex;
+      gap: 8px;
+    }
+
+    label,
+    a {
+      margin: 0;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: solid 0.1rem rgb(var(--accent));
+      font-size: 15px;
+      font-weight: 500;
+      color: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+      background-color: none;
+      z-index: 0;
+      outline: none;
+      user-select: none;
+      transition:
+        background-color 0.5s ease,
+        text-shadow 0.5s ease-out;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0 100% 0 0;
+        z-index: -1;
+        transition: right 0.2s ease;
+        border-radius: 8px;
+        background: var(--gradient-linear-blur);
+        background-size: 200% 100%;
+        filter: blur(8px);
+      }
+
+      &:hover::before,
+      &:focus::before {
+        animation: translate-background 3s linear infinite reverse 0.1s;
+        right: 0;
+      }
+
+      svg {
+        height: 18px;
+      }
+    }
+  }
+
+  @keyframes translate-background {
+    100% {
+      background-position: 200% 0%;
+    }
+  }
+</style>
