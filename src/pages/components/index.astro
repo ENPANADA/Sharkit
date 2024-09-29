@@ -1,15 +1,18 @@
 ---
-import Layout from "@layouts/Layout1.astro";
+import Layout from "@layouts/Main.astro";
 import Gallery from "@data/collections/components.json";
-import { IconArrowAltCircleRight } from "@lib/Icons";
+import { IconArrowAltCircleRight, Wave } from "@lib/Icons";
 import { getGalleryCoverByName as Cover } from "@lib/Covers";
 import { svgToDataUrl } from "@utils/IconsService";
 import { COMPONENT_URL } from "@config/routes";
 
 const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: "#310a65" });
+const wave = svgToDataUrl(Wave, { fill: "#310a65" });
+const wave2 = svgToDataUrl(Wave, { fill: "#08001e" });
+const wave3 = svgToDataUrl(Wave, { fill: "#63e" });
 ---
 
-<Layout>
+<Layout info={false}>
   <h1>Components</h1>
   <p>
     Sharkit offers basic components for building interfaces, enabling rapid
@@ -36,7 +39,52 @@ const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: "#310a65" });
   </section>
 </Layout>
 
-<style define:vars={{ arrow }}>
+<style define:vars={{ arrow, wave, wave2, wave3 }}>
+  section {
+    &::before {
+      position: absolute;
+      content: "";
+      inset: 0;
+      z-index: -2;
+      background: var(--wave), var(--wave3), var(--wave2), var(--wave),
+        var(--wave3), var(--wave2), var(--wave), var(--wave3), var(--wave2),
+        var(--wave), var(--wave3), var(--wave2), var(--wave), var(--wave3),
+        var(--wave2), var(--wave), var(--wave3);
+      background-size:
+        20% 9%,
+        20% 10%,
+        25% 18%,
+        40% 27%,
+        40% 28%,
+        45% 39%,
+        40% 50%,
+        40% 52%,
+        45% 63%,
+        50% 75%,
+        50% 78%,
+        55% 90%,
+        50% 105%,
+        50% 108%,
+        55% 123%,
+        60% 140%,
+        60% 145%;
+      background-color: rgb(var(--bg-dark));
+      background-repeat: repeat-x;
+      background-position: bottom;
+      background-attachment: fixed;
+      filter: blur(6px);
+      animation: translate-wave-position 50s infinite linear alternate;
+    }
+
+    &::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-color: rgba(0 0 0 / 75%);
+    }
+  }
+
   h1 {
     margin: 0;
     background: var(--accent-gradient);
@@ -165,6 +213,14 @@ const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: "#310a65" });
         transform: translateX(0) rotate(0);
         opacity: 1;
       }
+    }
+  }
+
+  @keyframes translate-wave-position {
+    to {
+      background-position:
+        200% bottom,
+        -200% bottom;
     }
   }
 </style>

@@ -2,6 +2,13 @@
 import App from "@layouts/App.astro";
 import Header from "@components/Header.astro";
 import Footer from "@components/Footer.astro";
+import BTH from "@components/BackToHome.astro";
+
+interface Props {
+  info?: boolean;
+}
+
+const { info = true } = Astro.props;
 ---
 
 <App>
@@ -9,7 +16,7 @@ import Footer from "@components/Footer.astro";
   <main>
     <slot />
   </main>
-  <Footer />
+  {info ? <Footer /> : <BTH/>}
 </App>
 
 <style>
