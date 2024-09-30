@@ -97,7 +97,7 @@ const wave = svgToDataUrl(Wave);
     h1 {
       margin: 0;
       width: 100%;
-      font-family: ArchivoBlack, system-ui, sans-serif;
+      font-family: "Archivo Black", system-ui, sans-serif;
       font-size: 120px;
       text-transform: uppercase;
       background-image: var(--wave);
@@ -109,7 +109,7 @@ const wave = svgToDataUrl(Wave);
       background-position: 0 bottom;
       position: relative;
       z-index: 1;
-      transform: skewX(-20deg) translateY(0);
+      transform: skewX(-20deg);
       animation:
         show 1s ease-out,
         wave 1s 4 linear,
@@ -119,7 +119,7 @@ const wave = svgToDataUrl(Wave);
         position: absolute;
         content: "";
         inset: 0;
-        background-image: var(--accent-gradient);
+        background-image: var(--lg);
         animation: show-text 0.5s forwards 1s;
       }
     }
@@ -187,6 +187,7 @@ const wave = svgToDataUrl(Wave);
 
     a {
       text-decoration: none;
+      font-weight: 300;
       align-self: flex-start;
       position: relative;
       padding: 12px 30px;
@@ -221,7 +222,7 @@ const wave = svgToDataUrl(Wave);
         inset: 0;
         z-index: -1;
         border-radius: inherit;
-        background-image: var(--gradient-linear-2);
+        background-image: var(--lg2);
         background-size: 200% 100%;
         filter: blur(8px);
         animation: translate-bg 2s linear infinite reverse;

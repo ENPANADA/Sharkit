@@ -1,6 +1,10 @@
 ---
 import { IconDorsalLogo } from "@lib/Icons";
 import { svgToData } from "@utils/IconsService";
+import "@fontsource/archivo-black";
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/700.css";
 ---
 
 <!doctype html>
@@ -9,7 +13,14 @@ import { svgToData } from "@utils/IconsService";
     <meta charset="UTF-8" />
     <meta name="description" content="Sharkit" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href={svgToData(IconDorsalLogo, {stroke: "#e0ccfa", strokeWidth: "12px"})} />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href={svgToData(IconDorsalLogo, {
+        stroke: "#e0ccfa",
+        strokeWidth: "12px",
+      })}
+    />
     <meta name="generator" content={Astro.generator} />
     <title>Sharkit</title>
   </head>
@@ -30,66 +41,58 @@ import { svgToData } from "@utils/IconsService";
     --accent-secondary: 102 51 238;
     --accent-light: 224 204 250;
     --accent-dark: 49 10 101;
-    --accent-gradient: linear-gradient(
+    --lg: linear-gradient(
       15deg,
       rgb(var(--accent-secondary)),
       rgb(var(--accent)) 30%,
       rgb(var(--accent-light)) 90%
     );
-    --gradient-linear: linear-gradient(
+    --lg1: linear-gradient(
       50deg,
       rgb(var(--bg-dark)),
       rgb(var(--accent-dark)),
       rgb(var(--bg-dark))
     );
-    --gradient-linear-2: linear-gradient(
+    --lg2: linear-gradient(
       45deg,
       rgb(var(--accent-dark)) 20%,
       rgb(var(--accent)),
       rgb(var(--accent-dark)) 80%
     );
-    --gradient-linear-blur: linear-gradient(
+    --lg3: linear-gradient(
+      to right,
+      rgb(var(--accent-light)),
+      rgb(var(--accent-secondary)),
+      rgb(var(--accent)),
+      rgb(var(--accent-dark))
+    );
+    --lg4: linear-gradient(
       45deg,
       rgb(var(--accent-secondary)),
       rgb(var(--bg-dark)),
       rgb(var(--accent-dark)),
       rgb(var(--accent))
     );
-    --accent-border-gradient-rotate: conic-gradient(
+    --lg5: linear-gradient(42deg, #160024 25%, #001925 75%);
+    --lg6: linear-gradient(
+      to right,
+      transparent,
+      rgb(var(--accent)),
+      rgb(var(--accent-secondary)),
+      transparent
+    );
+    --lg6-2b: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--accent)),
+      rgb(var(--accent-secondary)),
+      transparent
+    );
+    --cg1: conic-gradient(
       transparent 60deg,
       rgb(var(--accent)) 240deg,
       rgb(var(--accent-secondary)) 320deg
     );
-    --bg-gradient: linear-gradient(42deg, #160024 25%, #001925 75%);
-  }
-
-  @font-face {
-    font-family: "ArchivoBlack";
-    src: url("/fonts/ArchivoBlack-Regular.ttf") format("woff2");
-  }
-
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Regular.ttf") format("woff2");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
-  }
-
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Light.ttf") format("woff2");
-    font-weight: light;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: "Roboto";
-    src: url("/fonts/Roboto-Bold.ttf") format("woff2");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
   }
 
   *::selection {
@@ -98,7 +101,7 @@ import { svgToData } from "@utils/IconsService";
   }
 
   html {
-    font-family: Roboto, system-ui, sans-serif;
+    font-family: "Roboto", system-ui, sans-serif;
     color: rgb(var(--font-color));
     background: radial-gradient(
       125% 125% at 50% 10%,
@@ -112,7 +115,7 @@ import { svgToData } from "@utils/IconsService";
     scroll-behavior: smooth;
   }
 
-  body{
+  body {
     margin: 0;
   }
 </style>

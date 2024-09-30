@@ -101,7 +101,7 @@ const { data } = Astro.props;
           cursor: default;
           width: 50px;
           border-color: rgb(var(--accent));
-          background: var(--gradient-linear-2);
+          background: var(--lg2);
           background-size: 200% 100%;
           animation: translate-background 3s ease infinite;
         }
@@ -166,7 +166,7 @@ const { data } = Astro.props;
         padding: 12px;
         outline: none;
         border: 1px solid;
-        border-image: var(--accent-gradient) 1;
+        border-image: var(--lg) 1;
         margin: 0;
 
         &::-webkit-scrollbar {
@@ -179,7 +179,7 @@ const { data } = Astro.props;
         }
 
         &::-webkit-scrollbar-thumb {
-          background-image: var(--accent-gradient);
+          background-image: var(--lg);
           box-shadow: 0 0 10px rgb(var(--bg-dark));
           border-radius: 6px 0 0 6px;
           cursor: grab;
@@ -235,7 +235,7 @@ const { data } = Astro.props;
         z-index: -1;
         transition: right 0.2s ease;
         border-radius: 8px;
-        background: var(--gradient-linear-blur);
+        background: var(--lg4);
         background-size: 200% 100%;
         filter: blur(8px);
       }

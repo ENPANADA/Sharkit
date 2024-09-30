@@ -96,7 +96,7 @@ import { Toaster } from "@lib/Toasts";
         top: -175%;
         width: 100%;
         aspect-ratio: 1 / 1;
-        background: var(--accent-border-gradient-rotate);
+        background: var(--cg1);
         z-index: -1;
         border-radius: 100%;
         transform: rotate(0deg) scale(1.05);
@@ -104,7 +104,7 @@ import { Toaster } from "@lib/Toasts";
       }
 
       aside {
-        background: var(--bg-gradient);
+        background: var(--lg5);
         padding: 1rem;
         border-radius: 10px;
       }
@@ -123,7 +123,7 @@ import { Toaster } from "@lib/Toasts";
       &::after {
         display: block;
         content: "0-9";
-        background: var(--accent-gradient);
+        background: var(--lg);
         color: rgb(var(--bg-dark));
         width: max-content;
         margin: 10px auto;
@@ -153,7 +153,7 @@ import { Toaster } from "@lib/Toasts";
   }
 
   aside {
-    background: var(--bg-gradient);
+    background: var(--lg5);
     border-radius: 15px;
     padding: 15px;
 
@@ -164,7 +164,7 @@ import { Toaster } from "@lib/Toasts";
 
     fieldset {
       border: 1px solid;
-      border-image: var(--accent-gradient) 1;
+      border-image: var(--lg) 1;
       display: flex;
       gap: 20px;
       justify-content: center;
@@ -204,7 +204,7 @@ import { Toaster } from "@lib/Toasts";
         user-select: none;
 
         &:hover {
-          background-image: var(--accent-gradient);
+          background-image: var(--lg);
         }
       }
 
@@ -253,8 +253,8 @@ import { Toaster } from "@lib/Toasts";
 
     if (kbd) {
       kbd.style.backgroundImage = isComposed
-        ? (kbdE!.style.backgroundImage = "var(--accent-gradient)")
-        : "var(--accent-gradient)";
+        ? (kbdE!.style.backgroundImage = "var(--lg)")
+        : "var(--lg)";
       setTimeout(() => {
         kbd.style.backgroundImage = isComposed
           ? (kbdE!.style.backgroundImage = "")
