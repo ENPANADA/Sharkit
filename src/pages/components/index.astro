@@ -7,12 +7,13 @@ import { svgToDataUrl } from "@utils/IconsService";
 import { COMPONENT_URL } from "@config/routes";
 
 const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: "#310a65" });
-const wave = svgToDataUrl(Wave, { fill: "#310a65" });
-const wave2 = svgToDataUrl(Wave, { fill: "#08001e" });
-const wave3 = svgToDataUrl(Wave, { fill: "#63e" });
+const wD = svgToDataUrl(Wave, { fill: "#310a65" });
+const wBD = svgToDataUrl(Wave, { fill: "#08001e" });
+const wS = svgToDataUrl(Wave, { fill: "#63e" });
 ---
 
-<Layout info={false}>
+<Layout footer={false}>
+  <div></div>
   <h1>Components</h1>
   <p>
     Sharkit offers basic components for building interfaces, enabling rapid
@@ -39,52 +40,7 @@ const wave3 = svgToDataUrl(Wave, { fill: "#63e" });
   </section>
 </Layout>
 
-<style define:vars={{ arrow, wave, wave2, wave3 }}>
-  section {
-    &::before {
-      position: absolute;
-      content: "";
-      inset: 0;
-      z-index: -2;
-      background: var(--wave), var(--wave3), var(--wave2), var(--wave),
-        var(--wave3), var(--wave2), var(--wave), var(--wave3), var(--wave2),
-        var(--wave), var(--wave3), var(--wave2), var(--wave), var(--wave3),
-        var(--wave2), var(--wave), var(--wave3);
-      background-size:
-        20% 9%,
-        20% 10%,
-        25% 18%,
-        40% 27%,
-        40% 28%,
-        45% 39%,
-        40% 50%,
-        40% 52%,
-        45% 63%,
-        50% 75%,
-        50% 78%,
-        55% 90%,
-        50% 105%,
-        50% 108%,
-        55% 123%,
-        60% 140%,
-        60% 145%;
-      background-color: rgb(var(--bg-dark));
-      background-repeat: repeat-x;
-      background-position: bottom;
-      background-attachment: fixed;
-      filter: blur(6px);
-      animation: translate-wave-position 50s infinite linear alternate;
-    }
-
-    &::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -2;
-      background-color: rgba(0 0 0 / 75%);
-    }
-  }
-
+<style define:vars={{ w1: wD, w2: wBD, w3: wS, arrow }}>
   h1 {
     margin: 0;
     background: var(--accent-gradient);
@@ -213,6 +169,50 @@ const wave3 = svgToDataUrl(Wave, { fill: "#63e" });
         transform: translateX(0) rotate(0);
         opacity: 1;
       }
+    }
+  }
+
+  section {
+    &::before {
+      position: fixed;
+      content: "";
+      inset: 0;
+      z-index: -2;
+      background: var(--w1), var(--w3), var(--w2), var(--w1), var(--w3),
+        var(--w2), var(--w1), var(--w3), var(--w2), var(--w1), var(--w3),
+        var(--w2), var(--w1), var(--w3), var(--w2), var(--w1), var(--w3);
+      background-size:
+        20% 9%,
+        20% 10%,
+        25% 18%,
+        40% 27%,
+        40% 28%,
+        45% 39%,
+        40% 50%,
+        40% 52%,
+        45% 63%,
+        50% 75%,
+        50% 78%,
+        55% 90%,
+        50% 105%,
+        50% 108%,
+        55% 123%,
+        60% 140%,
+        60% 145%;
+      background-color: rgb(var(--bg-dark));
+      background-repeat: repeat-x;
+      background-position: bottom;
+      background-attachment: fixed;
+      filter: blur(6px);
+      animation: translate-wave-position 50s infinite linear alternate;
+    }
+
+    &::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-color: rgba(0 0 0 / 75%);
     }
   }
 
