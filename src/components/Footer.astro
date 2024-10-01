@@ -1,9 +1,10 @@
 ---
 import { IconGitHub, Wave } from "@lib/Icons";
 import { svgToDataUrl } from "@utils/IconsService";
+import { COLORS } from "@config/global";
 import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL } from "@config/routes";
 
-const wave = svgToDataUrl(Wave, { fill: "#08001e" });
+const wave = svgToDataUrl(Wave, { fill: COLORS.bgDark });
 ---
 
 <footer>

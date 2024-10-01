@@ -5,11 +5,12 @@ import { IconArrowAltCircleRight, Wave } from "@lib/Icons";
 import { getGalleryCoverByName as Cover } from "@lib/Covers";
 import { svgToDataUrl } from "@utils/IconsService";
 import { COMPONENT_URL } from "@config/routes";
+import { COLORS } from "@config/global";
 
-const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: "#310a65" });
-const wD = svgToDataUrl(Wave, { fill: "#310a65" });
-const wBD = svgToDataUrl(Wave, { fill: "#08001e" });
-const wS = svgToDataUrl(Wave, { fill: "#63e" });
+const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: COLORS.accentDark });
+const wD = svgToDataUrl(Wave, { fill: COLORS.accentDark });
+const wBD = svgToDataUrl(Wave, { fill: COLORS.bgDark });
+const wS = svgToDataUrl(Wave, { fill: COLORS.accentSecondary });
 ---
 
 <Layout footer={false}>

@@ -1,6 +1,7 @@
 ---
 import { IconDorsalLogo } from "@lib/Icons";
 import { svgToData } from "@utils/IconsService";
+import { COLORS } from "@config/global";
 import "@fontsource/archivo-black";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -17,7 +18,7 @@ import "@fontsource/roboto/700.css";
       rel="icon"
       type="image/svg+xml"
       href={svgToData(IconDorsalLogo, {
-        stroke: "#e0ccfa",
+        stroke: COLORS.accentLight,
         strokeWidth: "12px",
       })}
     />

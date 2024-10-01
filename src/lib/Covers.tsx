@@ -1,3 +1,4 @@
+import { COLORS } from "@config/global";
 import { IconSharKit } from "@lib/Icons";
 import type { PropTSX } from "@type/svg";
 
@@ -62,4 +63,4 @@ const covers: PropTSX = {
 };
 
 export const getGalleryCoverByName = ({ id }: { id: string }) =>
-    covers[id]?.() || <IconSharKit stroke="#E0CCFA" strokeWidth="5" data-default-cover />;
+    covers[id]?.() || <IconSharKit stroke={COLORS.accentLight} strokeWidth="5" data-default-cover />;

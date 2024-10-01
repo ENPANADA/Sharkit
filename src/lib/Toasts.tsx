@@ -16,9 +16,9 @@ const FakePromise = ({ loading, success, error }: Props) => {
       );
     }),
     {
-      loading: loading,
-      success: success,
-      error: error,
+      loading,
+      success,
+      error,
     }
   );
 };
