@@ -111,7 +111,6 @@ const { data } = Astro.props;
     &:has(span input:first-of-type:checked) {
       nav div label:first-of-type {
         background-color: rgb(var(--accent-dark));
-        text-shadow: 1px 1px 3px rgb(var(--accent-light));
       }
     }
 
@@ -121,7 +120,6 @@ const { data } = Astro.props;
       }
       nav div label:nth-of-type(2) {
         background-color: rgb(var(--accent-dark));
-        text-shadow: 1px 1px 3px rgb(var(--accent-light));
       }
     }
 
@@ -131,7 +129,6 @@ const { data } = Astro.props;
       }
       nav div label:nth-of-type(3) {
         background-color: rgb(var(--accent-dark));
-        text-shadow: 1px 1px 3px rgb(var(--accent-light));
       }
     }
   }
@@ -145,6 +142,7 @@ const { data } = Astro.props;
     max-height: 500px;
 
     div {
+      position: relative;
       scroll-snap-align: center;
       flex: 1 0 100%;
       display: flex;
@@ -152,6 +150,29 @@ const { data } = Astro.props;
       gap: 10px;
       padding: 0 10px;
       box-sizing: border-box;
+
+      button{
+        color: rgb(var(--accent-secondary));
+        position: absolute;
+        top: 45px;
+        right: 25px;
+        padding: 4px 6px;
+        border-radius: 8px;
+        cursor: pointer;
+        background-color: rgba(116, 116, 116, 0.1);
+        backdrop-filter: blur(1px);
+        border: none;
+        transition: color 0.2s;
+
+        svg{
+          height: 25px;
+          width: auto;
+        }
+
+        &:hover{
+          color: rgb(var(--accent-light));
+        }
+      }
 
       h2 {
         margin: 0;

@@ -2,6 +2,7 @@
 import Layout from "@layouts/Main.astro";
 import CodeBlock from "@components/CodeBlock.astro";
 import Navigation from "@components/Navigation.astro";
+import { IconCopy } from "@lib/Icons";
 import {
   getComponentDataByLink,
   getPreviousAndNextComponentsDataByIndex,
@@ -28,6 +29,9 @@ const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
                   if (code.file.split("/").includes(data.link)) {
                     return (
                       <div>
+                        <button data-copy2clipboard>
+                          <IconCopy />
+                        </button>
                         <code.default />
                       </div>
                     );
@@ -43,6 +47,23 @@ const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
     <Navigation {previous} {next} />
   </article>
 </Layout>
+
+<script>
+  const elements = document.querySelectorAll("[data-copy2clipboard]");
+  elements.forEach((element) => {
+    element.addEventListener("click", () => {
+      const code = element.parentElement?.querySelector("pre")?.textContent;
+      navigator.clipboard
+        .writeText(code as string)
+        .then(() => {
+          alert("Copied");
+        })
+        .catch((err) => {
+          console.error("Error copying:", err);
+        });
+    });
+  });
+</script>
 
 <style>
   article {
