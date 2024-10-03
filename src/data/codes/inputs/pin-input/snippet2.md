@@ -1,7 +1,3 @@
----
-lang: css
----
-
 ## CSS
 
 ```css

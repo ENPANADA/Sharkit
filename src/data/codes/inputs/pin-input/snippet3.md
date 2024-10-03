@@ -1,7 +1,3 @@
----
-lang: js
----
-
 ## Javascript
 
 ```js

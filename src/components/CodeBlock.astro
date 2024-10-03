@@ -2,7 +2,10 @@
 import type { Component } from "@type/collection";
 import { CODEOPENIO_BASE_URL, CODILINK_BASE_URL } from "@config/routes";
 import { getIconLangByName as IconLang } from "@utils/IconsService";
+import { svgToDataUrl } from "@utils/IconsService";
+import { COLORS } from "@config/global";
 import {
+  IconCheck,
   IconCodiLink,
   IconCodePenIo,
   IconArrowSquareUpRight,
@@ -13,6 +16,7 @@ interface Props {
 }
 
 const { data } = Astro.props;
+const check = svgToDataUrl(IconCheck, { color: COLORS.success });
 ---
 
 <figure>
@@ -55,23 +59,26 @@ const { data } = Astro.props;
   </nav>
 </figure>
 
-<style>
+<style define:vars={{ check }}>
+  
   figure {
+    --fdfd: fdf;
+
     margin: 0;
     overflow: hidden;
     position: relative;
-    max-width: var(--max-width-content);
 
     & > div {
       position: absolute;
-      bottom: 65px;
+      top: calc(100% - 85px);
+      /* top: 472px; */
       display: flex;
       justify-content: center;
       margin: 0 10px;
       width: calc(100% - 20px);
 
       span {
-        background-color: rgba(116, 116, 116, 0.1);
+        background-color: rgb(var(--font-secondary-color) / 10%);
         padding: 7px 12px;
         border-radius: 10px;
         display: inline-flex;
@@ -109,6 +116,15 @@ const { data } = Astro.props;
     }
 
     &:has(span input:first-of-type:checked) {
+      aside {
+        div:first-of-type {
+          h2,
+          button {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
+      }
       nav div label:first-of-type {
         background-color: rgb(var(--accent-dark));
       }
@@ -117,6 +133,13 @@ const { data } = Astro.props;
     &:has(span input:nth-child(2):checked) {
       aside {
         transform: translateX(-100%);
+        div:nth-of-type(2) {
+          h2,
+          button {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
       }
       nav div label:nth-of-type(2) {
         background-color: rgb(var(--accent-dark));
@@ -126,6 +149,13 @@ const { data } = Astro.props;
     &:has(span input:nth-child(3):checked) {
       aside {
         transform: translateX(-200%);
+        div:nth-of-type(3) {
+          h2,
+          button {
+            opacity: 1;
+            transform: translate3d(0, 0, 0);
+          }
+        }
       }
       nav div label:nth-of-type(3) {
         background-color: rgb(var(--accent-dark));
@@ -149,9 +179,10 @@ const { data } = Astro.props;
       flex-direction: column;
       gap: 10px;
       padding: 0 10px;
+      max-width: 100%;
       box-sizing: border-box;
 
-      button{
+      button {
         color: rgb(var(--accent-secondary));
         position: absolute;
         top: 45px;
@@ -159,17 +190,46 @@ const { data } = Astro.props;
         padding: 4px 6px;
         border-radius: 8px;
         cursor: pointer;
-        background-color: rgba(116, 116, 116, 0.1);
+        background-color: rgb(var(--font-secondary-color) / 10%);
         backdrop-filter: blur(1px);
         border: none;
-        transition: color 0.2s;
+        opacity: 0;
+        transform: translate3d(100%, 0, 0);
+        transition:
+          color 0.2s,
+          opacity 0.5s 0.5s,
+          transform 0.5s 0.5s;
 
-        svg{
+        &::before {
+          content: "Copied!";
+          position: absolute;
+          inset-block: 0;
+          right: 110%;
+          padding: 10px;
+          color: rgb(var(--success));
+          font-weight: bold;
+          border-radius: inherit;
+          background-color: rgb(var(--font-secondary-color) / 10%);
+          backdrop-filter: blur(1px);
+          opacity: var(--opacity, 0);
+          transition: opacity 0.2s ease-out;
+        }
+
+        &::after {
+          content: var(--check);
+          position: absolute;
+          inset: 0;
+          padding: 10px;
+          opacity: var(--opacity, 0);
+          transition: opacity 0.2s ease-out;
+        }
+
+        svg {
           height: 25px;
           width: auto;
         }
 
-        &:hover{
+        &:hover {
           color: rgb(var(--accent-light));
         }
       }
@@ -180,6 +240,11 @@ const { data } = Astro.props;
         letter-spacing: 5px;
         align-self: center;
         text-shadow: 3px 3px 4px rgb(var(--accent));
+        opacity: 0;
+        transform: translate3d(0, -100%, 0);
+        transition:
+          opacity 0.5s 0.2s,
+          transform 0.5s 0.2s;
       }
 
       pre {
@@ -196,7 +261,7 @@ const { data } = Astro.props;
 
         &::-webkit-scrollbar-track {
           border-radius: 6px 0 0 6px;
-          background-color: rgb(49, 49, 49);
+          background-color: rgb(var(--font-secondary-color) / 15%);
         }
 
         &::-webkit-scrollbar-thumb {
@@ -216,13 +281,16 @@ const { data } = Astro.props;
   nav {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin: 10px 0;
-    padding: 0 10px;
+    padding-inline: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
 
     div {
       display: flex;
+      flex-wrap: wrap;
       gap: 8px;
+      justify-content: center;
     }
 
     label,

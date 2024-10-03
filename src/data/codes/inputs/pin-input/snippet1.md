@@ -1,7 +1,3 @@
----
-lang: html
----
-
 ## HTML
 
 ```html

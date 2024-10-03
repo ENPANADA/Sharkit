@@ -48,23 +48,6 @@ const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
   </article>
 </Layout>
 
-<script>
-  const elements = document.querySelectorAll("[data-copy2clipboard]");
-  elements.forEach((element) => {
-    element.addEventListener("click", () => {
-      const code = element.parentElement?.querySelector("pre")?.textContent;
-      navigator.clipboard
-        .writeText(code as string)
-        .then(() => {
-          alert("Copied");
-        })
-        .catch((err) => {
-          console.error("Error copying:", err);
-        });
-    });
-  });
-</script>
-
 <style>
   article {
     display: flex;
@@ -77,6 +60,8 @@ const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
       box-shadow: rgb(var(--bg-dark)) 6px 6px 12px;
       border-radius: 15px;
       padding: 15px;
+      max-width: var(--max-width-content);
+      box-sizing: border-box;
     }
 
     h3 {
@@ -89,4 +74,36 @@ const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
       font-family: "Archivo Black";
     }
   }
+
+  section{
+    width: fit-content;
+  }
 </style>
+
+<script>
+  const buttons = document.querySelectorAll("[data-copy2clipboard]");
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const code = btn.parentElement?.querySelector("pre")?.textContent;
+      const copy = e.target as HTMLButtonElement;
+      const currentColor = copy.style.color;
+      copy.disabled = true;
+      navigator.clipboard
+        .writeText(code as string)
+        .then(() => true)
+        .catch((err) => {
+          console.error("Error copying:", err);
+          return false;
+        })
+        .then((res) => {
+          copy.style.color = res ? "transparent" : "rgb(var(--error))";
+          res && copy.style.setProperty("--opacity", "1");
+          setTimeout(() => {
+            copy.style.color = currentColor;
+            res && copy.style.removeProperty("--opacity");
+            copy.disabled = false;
+          }, 1000);
+        });
+    });
+  });
+</script>

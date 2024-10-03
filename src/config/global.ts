@@ -8,4 +8,6 @@ export const COLORS = {
     accentSecondary: '#63e',
     accentLight: '#e0ccfa',
     accentDark: '#310a65',
+    success: '#9ece6a',
+    error: '#f7768e',
 };

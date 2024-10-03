@@ -192,7 +192,6 @@ export const IconCopy = (props?: IconProp) => (
   <svg
     stroke="currentColor"
     fill="currentColor"
-    stroke-width="0"
     viewBox="0 0 512 512"
     height="1em"
     width="1em"
@@ -204,17 +203,28 @@ export const IconCopy = (props?: IconProp) => (
       x="128"
       y="128"
       fill="none"
-      stroke-linejoin="round"
-      stroke-width="32"
+      strokeLinejoin="round"
+      strokeWidth="32"
       rx="57"
       ry="57"
     ></rect>
     <path
       fill="none"
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      stroke-width="32"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
       d="m383.5 128 .5-24a56.16 56.16 0 0 0-56-56H112a64.19 64.19 0 0 0-64 64v216a56.16 56.16 0 0 0 56 56h24"
     ></path>
+  </svg>
+);
+
+export const IconCheck = (props?: IconProp) => (
+  <svg
+    fill="currentColor"
+    viewBox="0 0 512 512"
+    xmlns="http://www.w3.org/2000/svg"
+    {...props}
+  >
+    <path d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path>
   </svg>
 );
