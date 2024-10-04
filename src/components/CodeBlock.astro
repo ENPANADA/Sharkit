@@ -20,23 +20,25 @@ const check = svgToDataUrl(IconCheck, { color: COLORS.success });
 ---
 
 <figure>
-  <aside>
-    <slot />
-  </aside>
-  <div>
-    <span>
-      {
-        data.code.langs.map((lang, i) => (
-          <input
-            type="radio"
-            name="langs"
-            id={"lang-" + lang}
-            checked={i === 0 ? true : undefined}
-          />
-        ))
-      }
-    </span>
-  </div>
+  <article>
+    <aside>
+      <slot />
+    </aside>
+    <div>
+      <span>
+        {
+          data.code.langs.map((lang, i) => (
+            <input
+              type="radio"
+              name="langs"
+              id={"lang-" + lang}
+              checked={i === 0 ? true : undefined}
+            />
+          ))
+        }
+      </span>
+    </div>
+  </article>
   <nav>
     <div>
       <a href={CODEOPENIO_BASE_URL + data.code.opencodeio} target="_blank">
@@ -60,57 +62,58 @@ const check = svgToDataUrl(IconCheck, { color: COLORS.success });
 </figure>
 
 <style define:vars={{ check }}>
-  
   figure {
-    --fdfd: fdf;
+    --max-block-height: 500px;
 
     margin: 0;
     overflow: hidden;
-    position: relative;
 
-    & > div {
-      position: absolute;
-      top: calc(100% - 85px);
-      /* top: 472px; */
-      display: flex;
-      justify-content: center;
-      margin: 0 10px;
-      width: calc(100% - 20px);
+    article {
+      position: relative;
 
-      span {
-        background-color: rgb(var(--font-secondary-color) / 10%);
-        padding: 7px 12px;
-        border-radius: 10px;
-        display: inline-flex;
-        gap: 4px;
-        backdrop-filter: blur(1px);
-      }
+      & > div {
+        position: absolute;
+        top: calc(100% - 40px);
+        display: flex;
+        justify-content: center;
+        margin: 0 10px;
+        width: calc(100% - 20px);
 
-      input {
-        appearance: none;
-        background-color: rgb(var(--accent-dark));
-        margin: 0;
-        width: 10px;
-        height: 10px;
-        border: 1px solid rgb(var(--accent-secondary));
-        border-radius: 10px;
-        transition:
-          width 0.2s ease,
-          background-color 0.4s ease-out,
-          border-color 0.4s ease-out;
-        cursor: pointer;
-
-        &:hover {
-          border-color: rgb(var(--accent-light));
+        span {
+          background-color: rgb(var(--font-secondary-color) / 10%);
+          padding: 7px 12px;
+          border-radius: 10px;
+          display: inline-flex;
+          gap: 4px;
+          backdrop-filter: blur(1px);
         }
 
-        &:checked {
-          cursor: default;
-          width: 50px;
-          border-color: rgb(var(--accent));
-          background: var(--lg2);
-          background-size: 200% 100%;
-          animation: translate-background 3s ease infinite;
+        input {
+          appearance: none;
+          background-color: rgb(var(--accent-dark));
+          margin: 0;
+          width: 10px;
+          height: 10px;
+          border: 1px solid rgb(var(--accent-secondary));
+          border-radius: 10px;
+          transition:
+            width 0.2s ease,
+            background-color 0.4s ease-out,
+            border-color 0.4s ease-out;
+          cursor: pointer;
+
+          &:hover {
+            border-color: rgb(var(--accent-light));
+          }
+
+          &:checked {
+            cursor: default;
+            width: 50px;
+            border-color: rgb(var(--accent));
+            background: var(--lg2);
+            background-size: 200% 100%;
+            animation: translate-background 3s ease infinite;
+          }
         }
       }
     }
@@ -169,7 +172,7 @@ const check = svgToDataUrl(IconCheck, { color: COLORS.success });
     scroll-behavior: smooth;
     padding: 5px 0;
     transition: transform 0.4s ease-in-out;
-    max-height: 500px;
+    max-height: var(--max-block-height);
 
     div {
       position: relative;

@@ -144,12 +144,12 @@ export const IconSharKit = (props?: IconProp) => (
 export const Wave = (props?: IconProp) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width="200px"
-    height="300px"
-    fill="#883aea"
+    width="200"
+    height="300"
+    fill="currentColor"
     {...props}
   >
-    <path d="m200.5 93.5q0 103.5 0 207-100.5 0-201 0 0-103 0-206 41.3 14.9 84.4 6.6 19.1-7.1 38.2-14.1 40.1-7.9 78.4 6.5z" />
+    <path d="M200.5 94.5V300.5H-0.5V94.5C27.0333 104.433 46.2667 108.533 75 103C93.5 99.4374 100.5 91.2554 122.1 87C148.833 81.7333 174.967 84.9 200.5 94.5Z" />
   </svg>
 );
 

@@ -4,8 +4,9 @@ import Footer from "@components/Footer.astro";
 import { IconSharKit, IconArrowRight, Wave } from "@lib/Icons";
 import { svgToDataUrl } from "@utils/IconsService";
 import { HOME_COMPONENT_URL } from "@config/routes";
+import { COLORS } from "@config/global";
 
-const wave = svgToDataUrl(Wave);
+const wave = svgToDataUrl(Wave, { fill: COLORS.accent });
 ---
 
 <Layout>
