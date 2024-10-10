@@ -43,6 +43,7 @@ const wave = svgToDataUrl(Wave, { fill: COLORS.accent });
     place-content: center;
     position: relative;
     background-color: rgb(0 0 0 / 20%);
+    overflow: hidden;
 
     &::before {
       content: "";
@@ -162,6 +163,7 @@ const wave = svgToDataUrl(Wave, { fill: COLORS.accent });
 
     p {
       z-index: 1;
+      font-weight: 300;
       font-size: 30px;
       margin: 0;
       opacity: 0;
@@ -188,7 +190,6 @@ const wave = svgToDataUrl(Wave, { fill: COLORS.accent });
 
     a {
       text-decoration: none;
-      font-weight: 300;
       align-self: flex-start;
       position: relative;
       padding: 12px 30px;

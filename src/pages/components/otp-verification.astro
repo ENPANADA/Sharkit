@@ -1,0 +1,137 @@
+---
+import Template from "@layouts/Component.astro";
+import { IconSharKit } from "@lib/Icons";
+---
+
+<Template>
+  <h3>One Time Password Verification</h3>
+  <div>
+    <header>
+      <h2>SHARKIT</h2>
+    </header>
+
+    <main>
+      <h3>Dear <strong>Juan Perez</strong>,</h3>
+      <p>
+        We inform you that, at your request, we have generated a security code
+        to update your default password in our system <strong>XXXXXX</strong>.
+        This code is necessary to complete the password change process and
+        ensure the protection of your account.
+      </p>
+      <p>
+        <strong>Security Code:</strong>
+        <span>123456</span>
+      </p>
+      <p>
+        <strong>Expiration date:</strong> 10/09/24, 10:03 PM
+      </p>
+      <p>
+        To update your password, please visit our page to complete the process:
+      </p>
+      <a href="#">Go to website</a>
+      <p>
+        If you <strong>did not request</strong> this change, please contact our support
+        team immediately to ensure the protection of your account.
+      </p>
+      <p>
+        We appreciate your attention and remain at your disposal for any further
+        inquiries or assistance you may need.
+      </p>
+      <p>Best regards, Sincerely.</p>
+      <figure>
+        <IconSharKit />
+        <figcaption>Internal Control Offices</figcaption>
+      </figure>
+
+      <footer>
+        <hr />
+        <p>Your values are only seen through your actions</p>
+      </footer>
+    </main>
+  </div>
+
+  <style>
+    div {
+      --local-color: rgb(var(--accent));
+      --local-color-secondary: rgb(var(--accent-light));
+
+      background: var(--lg5);
+      font-size: 15px;
+
+      h2 {
+        margin: 0;
+        text-align: center;
+        background-color: var(--local-color);
+        border-radius: 8px 8px 0 0;
+        letter-spacing: 3px;
+        font-style: italic;
+        font-size: 25px;
+      }
+
+      main {
+        padding: 10px 25px;
+
+        strong {
+          color: var(--local-color-secondary);
+        }
+        
+        h3 {
+          font-size: 22px;
+          color: inherit;
+        }
+
+        a {
+          display: block;
+          width: max-content;
+          padding: 5px 12px;
+          border-radius: 5px;
+          background-color: var(--local-color);
+          font-weight: bold;
+          margin: 0 auto;
+          color: inherit;
+        }
+
+        span {
+          padding: 4px 8px;
+          border-radius: 5px;
+          background-color: var(--local-color);
+          font-style: italic;
+          font-weight: bold;
+          letter-spacing: 2px;
+        }
+
+        figure {
+          svg {
+            display: block;
+            width: 250px;
+            margin: 0 auto;
+            color: var(--local-color-secondary);
+            stroke-width: 4px;
+          }
+
+          figcaption {
+            display: block;
+            margin: 0 auto;
+            font-weight: bold;
+            width: max-content;
+            margin-top: 0.5rem;
+          }
+        }
+      }
+
+      footer {
+        hr {
+          border: 2px solid var(--local-color);
+        }
+
+        p {
+          font-weight: bold;
+          color: var(--local-color-secondary);
+          font-style: italic;
+          text-align: right;
+          font-size: 13px;
+        }
+      }
+    }
+  </style>
+</Template>
