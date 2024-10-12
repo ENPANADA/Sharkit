@@ -20,7 +20,7 @@ import { IconSharKit } from "@lib/Icons";
       </p>
       <p>
         <strong>Security Code:</strong>
-        <span>123456</span>
+        <span>4DM1N</span>
       </p>
       <p>
         <strong>Expiration date:</strong> 10/09/24, 10:03 PM
@@ -49,89 +49,90 @@ import { IconSharKit } from "@lib/Icons";
       </footer>
     </main>
   </div>
+</Template>
 
-  <style>
-    div {
-      --local-color: rgb(var(--accent));
-      --local-color-secondary: rgb(var(--accent-light));
+<style>
+  div {
+    background: var(--lg5);
+    font-size: 16px;
 
-      background: var(--lg5);
-      font-size: 15px;
+    h2 {
+      margin: 0;
+      text-align: center;
+      background: var(--lg3);
+      border-radius: 8px 8px 0 0;
+      letter-spacing: 3px;
+      font-style: italic;
+      font-size: 25px;
+    }
 
-      h2 {
-        margin: 0;
-        text-align: center;
-        background-color: var(--local-color);
-        border-radius: 8px 8px 0 0;
-        letter-spacing: 3px;
+    main {
+      padding: 10px 25px;
+
+      strong {
+        color: rgb(var(--accent-light));
+      }
+
+      h3 {
+        font-size: 22px;
+        color: inherit;
+      }
+
+      a {
+        display: block;
+        width: max-content;
+        padding: 5px 12px;
+        border-radius: 5px;
+        background: var(--lg2);
+        font-weight: bold;
+        margin: 0 auto;
+        color: inherit;
+      }
+
+      span {
+        padding: 4px 8px;
+        border-radius: 5px;
+        background: var(--lg2);
         font-style: italic;
-        font-size: 25px;
+        font-weight: bold;
+        letter-spacing: 2px;
       }
 
-      main {
-        padding: 10px 25px;
-
-        strong {
-          color: var(--local-color-secondary);
-        }
-        
-        h3 {
-          font-size: 22px;
-          color: inherit;
-        }
-
-        a {
+      figure {
+        svg {
           display: block;
-          width: max-content;
-          padding: 5px 12px;
-          border-radius: 5px;
-          background-color: var(--local-color);
-          font-weight: bold;
+          width: 250px;
           margin: 0 auto;
-          color: inherit;
+          color: rgb(var(--accent-light));
+          stroke-width: 4px;
         }
 
-        span {
-          padding: 4px 8px;
-          border-radius: 5px;
-          background-color: var(--local-color);
-          font-style: italic;
+        figcaption {
+          display: block;
+          margin: 0 auto;
           font-weight: bold;
-          letter-spacing: 2px;
-        }
-
-        figure {
-          svg {
-            display: block;
-            width: 250px;
-            margin: 0 auto;
-            color: var(--local-color-secondary);
-            stroke-width: 4px;
-          }
-
-          figcaption {
-            display: block;
-            margin: 0 auto;
-            font-weight: bold;
-            width: max-content;
-            margin-top: 0.5rem;
-          }
-        }
-      }
-
-      footer {
-        hr {
-          border: 2px solid var(--local-color);
-        }
-
-        p {
-          font-weight: bold;
-          color: var(--local-color-secondary);
-          font-style: italic;
-          text-align: right;
-          font-size: 13px;
+          width: max-content;
+          margin-top: 0.5rem;
         }
       }
     }
-  </style>
-</Template>
+
+    footer {
+      hr {
+        border: none;
+        /* border: 2px solid rgb(var(--accent)); */
+        height: 2px;
+        background: var(--lg);
+        /* border: 2px solid rgb(var(--accent)); */
+      }
+
+      p {
+        font-weight: bold;
+        color: rgb(var(--accent-light));
+        font-style: italic;
+        text-align: right;
+        font-size: 15px;
+      }
+    }
+  }
+</style>
