@@ -2,7 +2,7 @@
 import type { Component } from "@type/collection";
 import { CODEOPENIO_BASE_URL, CODILINK_BASE_URL } from "@config/routes";
 import { getIconLangByName as IconLang } from "@utils/IconsService";
-import { svgToDataUrl } from "@utils/IconsService";
+import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
 import {
   IconCheck,
@@ -16,7 +16,7 @@ interface Props {
 }
 
 const { data } = Astro.props;
-const check = svgToDataUrl(IconCheck, { color: COLORS.success });
+const check = svgToBase64Url(IconCheck, { color: COLORS.success });
 ---
 
 <figure>

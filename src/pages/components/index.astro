@@ -3,14 +3,14 @@ import Layout from "@layouts/Main.astro";
 import Gallery from "@data/collections/components.json";
 import { IconArrowAltCircleRight, Wave } from "@lib/Icons";
 import { getGalleryCoverByName as Cover } from "@lib/Covers";
-import { svgToDataUrl } from "@utils/IconsService";
+import { svgToBase64Url } from "@utils/IconsService";
 import { COMPONENT_URL } from "@config/routes";
 import { COLORS } from "@config/global";
 
-const arrow = svgToDataUrl(IconArrowAltCircleRight, { fill: COLORS.accentDark });
-const wD = svgToDataUrl(Wave, { fill: COLORS.accentDark });
-const wBD = svgToDataUrl(Wave, { fill: COLORS.bgDark });
-const wS = svgToDataUrl(Wave, { fill: COLORS.accentSecondary });
+const arrow = svgToBase64Url(IconArrowAltCircleRight, { fill: COLORS.accentDark });
+const wD = svgToBase64Url(Wave, { fill: COLORS.accentDark });
+const wBD = svgToBase64Url(Wave, { fill: COLORS.bgDark });
+const wS = svgToBase64Url(Wave, { fill: COLORS.accentSecondary });
 ---
 
 <Layout footer={false}>
