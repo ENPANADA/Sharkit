@@ -75,7 +75,6 @@ import Template from "@layouts/Component.astro";
             </div>
           </div>
         </figure>
-
       </article>
 
       <hr />
@@ -313,7 +312,7 @@ import Template from "@layouts/Component.astro";
     border-radius: 5px;
     padding: 2px 6px;
   }
-  
+
   input::file-selector-button:hover {
     border-color: rgb(var(--accent-light));
   }
@@ -345,43 +344,45 @@ import Template from "@layouts/Component.astro";
     display: inline-flex;
     justify-content: center;
     gap: 8px;
-    background: var(--lg4);
-    border-radius: 8px;
+    background: var(--lg);
+    border-radius: 20px;
     padding: 8px;
     color: inherit;
     margin: 0 auto;
     width: 50%;
     font-weight: bold;
-    border: 1px solid rgb(var(--accent-dark));
+    border: 1px solid rgb(var(--accent-secondary));
     cursor: pointer;
-    transition: border-color 0.2s, gap 0.2s;
-    
-    svg{
+    transition:
+      border-color 0.2s,
+      gap 0.2s;
+
+    svg {
       transition: transform 0.2s;
     }
   }
 
-  button:hover{
+  button:hover {
     border-color: rgb(var(--accent-light));
     gap: 30px;
 
-    svg{
+    svg {
       transform: translateY(-2px) rotate(-25deg);
     }
   }
-  
+
   hr {
     border-image: var(--lg6) 1;
   }
-  
-  @media (max-width: 640px){
-    button, form article figure > div{
+
+  @media (max-width: 640px) {
+    button,
+    form article figure > div {
       width: 100%;
     }
 
-    figure{
+    figure {
       flex-direction: column;
-      
     }
   }
 </style>

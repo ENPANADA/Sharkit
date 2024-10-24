@@ -2,6 +2,7 @@
 
 ```css
 form {
+  color: white;
   width: 100%;
   max-width: 800px;
   background: linear-gradient(45deg, #160024 25%, #001925 75%);
@@ -9,7 +10,6 @@ form {
   border-radius: 15px;
   box-sizing: border-box;
   box-shadow: #000 6px 6px 12px;
-  color: white;
 }
 
 article:first-of-type figure > div:first-of-type {
@@ -72,7 +72,7 @@ input::file-selector-button {
 }
 
 input::file-selector-button:hover {
-  border-color: rgb(var(--accent-light));
+  border-color: #e0ccfa;
 }
 
 input:focus,
@@ -102,19 +102,29 @@ button {
   display: inline-flex;
   justify-content: center;
   gap: 10px;
-  background: #310a65;
-  border-radius: 8px;
+  background: linear-gradient(15deg, #63e, #883aea 30%, #e0ccfa 90%);
+  border-radius: 20px;
   padding: 8px;
   color: inherit;
   margin: 0 auto;
   width: 50%;
   font-weight: bold;
-  border: 1px solid #883aea;
+  border: 1px solid #63e;
   cursor: pointer;
+  transition: border-color 0.2s, gap 0.2s;
+
+  svg {
+    transition: transform 0.2s;
+  }
 }
 
 button:hover {
   border-color: #e0ccfa;
+  gap: 30px;
+
+  svg {
+    transform: translateY(-2px) rotate(-25deg);
+  }
 }
 
 hr {
