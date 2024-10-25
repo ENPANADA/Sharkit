@@ -14,7 +14,7 @@
   "Forms": [
     {
       "tittle": "OTP",
-      "cover": "example",
+      "cover": "optForm",
       "link": "otp",
       "code": {
         "langs": ["html", "css", "javascript"],
@@ -24,7 +24,7 @@
     },
     {
       "tittle": "Request Form",
-      "cover": "",
+      "cover": "requestForm",
       "link": "request",
       "code": {
         "langs": ["html", "css"],
