@@ -1,40 +1,52 @@
 ---
-import { IconHome } from "@lib/Icons";
 import { HOME_URL } from "@config/routes";
+import { IconHome, IconHeartEmpty, IconMexicoFlag } from "@lib/Icons";
+import { COLORS } from "@config/global";
 ---
 
 <footer>
+  <p>
+    Made with <IconHeartEmpty color={COLORS.accentLight} strokeWidth="20px" /> from
+    <IconMexicoFlag />
+  </p>
   <a href={HOME_URL}><IconHome />Back to Home</a>
 </footer>
 
 <style>
   footer {
-    margin-top: 10vh;
+    margin-block: 50px;
     padding: 60px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
   }
 
   a {
     text-decoration: none;
-    padding: 8px 15px;
-    border: solid 1px rgb(var(--accent-light));
+    padding: 10px 25px;
+    border: solid 2px rgb(var(--accent-light));
     font-size: 15px;
     color: inherit;
     cursor: pointer;
     user-select: none;
     letter-spacing: 1px;
-    border-radius: 12px;
+    border-radius: 20px;
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-image: var(--lg1);
+    background-image: var(--lg2);
     background-size: 200% 100%;
-    transition: border-color 0.1s ease-in;
+    transition: background-position 0.2s linear;
 
     &:hover {
-      border-color: rgb(var(--accent));
+      background-position: 100%;
     }
+  }
+
+  p {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
   }
 </style>
