@@ -245,10 +245,88 @@ const requestForm = () => (
   </svg>
 );
 
+const optMail = () => (
+  <svg viewBox="0 0 240 240">
+    <rect x="31" y="28" width="179" height="184" rx="16" fill={COLORS.bgDark} />
+    <path
+      d="M31 44C31 35.1634 38.1634 28 47 28H194C202.837 28 210 35.1634 210 44V44H31V44Z"
+      fill={COLORS.accentSecondary}
+    />
+    <rect x="99" y="87" width="42" height="11" rx="5.5" fill={COLORS.accent} />
+    <rect
+      x="44"
+      y="53"
+      width="153"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect x="44" y="75" width="88" height="6" rx="3" fill={COLORS.accentDark} />
+    <rect
+      x="44"
+      y="64"
+      width="153"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect
+      x="44"
+      y="105"
+      width="153"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect
+      x="44"
+      y="116"
+      width="56"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect
+      x="44"
+      y="127"
+      width="153"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect
+      x="44"
+      y="138"
+      width="29"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect
+      x="100"
+      y="177"
+      width="40"
+      height="6"
+      rx="3"
+      fill={COLORS.accentDark}
+    />
+    <rect x="86" y="147" width="68" height="25" fill={COLORS.accent} />
+    <line
+      x1="44"
+      y1="189.986"
+      x2="197"
+      y2="189.986"
+      stroke={COLORS.accentLight}
+      strokeWidth="2"
+    />
+  </svg>
+);
+
 const covers: PropTSX = {
   pinInput,
   optForm,
   requestForm,
+  optMail,
 };
 
 export const getGalleryCoverByName = ({ id }: { id: string }) =>

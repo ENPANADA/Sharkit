@@ -14,7 +14,7 @@ import { COLORS } from "@config/global";
 
 <style>
   footer {
-    margin-block: 50px;
+    margin-block: 40px 80px;
     padding: 60px 10px;
     display: flex;
     flex-direction: column;
@@ -23,6 +23,7 @@ import { COLORS } from "@config/global";
   }
 
   a {
+    position: relative;
     text-decoration: none;
     padding: 10px 25px;
     border: solid 2px rgb(var(--accent-light));
@@ -38,6 +39,16 @@ import { COLORS } from "@config/global";
     background-image: var(--lg2);
     background-size: 200% 100%;
     transition: background-position 0.2s linear;
+    z-index: 1;
+
+    &::before{
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-color: rgb(0 0 0 / 40%);
+      border-radius: inherit;
+      z-index: -1;
+    }
 
     &:hover {
       background-position: 100%;
