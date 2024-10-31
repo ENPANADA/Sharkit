@@ -2,7 +2,7 @@
 import { IconGitHub, Wave } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
-import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL } from "@config/routes";
+import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL, HOME_BACKGROUND_URL } from "@config/routes";
 
 const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
 ---
@@ -26,7 +26,7 @@ const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
           <ul>
             <li><a href={HOME_URL}>Home</a></li>
             <li><a href={HOME_COMPONENT_URL}>Components</a></li>
-            <li><a href="#">Backgrounds</a></li>
+            <li><a href={HOME_BACKGROUND_URL}>Backgrounds</a></li>
           </ul>
         </aside>
         <aside>

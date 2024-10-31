@@ -1,5 +1,6 @@
 export const HOME_URL = '/';
 export const HOME_COMPONENT_URL = '/components';
+export const HOME_BACKGROUND_URL = '/backgrounds';
 
 export const COMPONENT_URL = HOME_COMPONENT_URL + '/';
 
