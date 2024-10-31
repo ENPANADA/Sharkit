@@ -64,15 +64,15 @@ import { Toaster } from "@lib/Toasts";
   </aside>
   <h3>Specific patterns</h3>
   <section>
-    <h4>Only numbers</h4>
+    <h4 data-value="0-9">Only numbers</h4>
     <Pininput length={3} regexp="0-9" />
   </section>
   <section>
-    <h4>Only lowercase</h4>
+    <h4 data-value="a-z">Only lowercase</h4>
     <Pininput length={4} regexp="a-z" />
   </section>
   <section>
-    <h4>Only uppercase</h4>
+    <h4 data-value="A-Z">Only uppercase</h4>
     <Pininput length={5} regexp="A-Z" />
   </section>
   <Fragment slot="after">
@@ -122,7 +122,7 @@ import { Toaster } from "@lib/Toasts";
 
       &::after {
         display: block;
-        content: "0-9";
+        content: attr(data-value);
         background: var(--lg);
         color: rgb(var(--bg-dark));
         width: max-content;
@@ -132,22 +132,6 @@ import { Toaster } from "@lib/Toasts";
         border-radius: 5px;
         letter-spacing: 3px;
         text-align: end;
-      }
-    }
-
-    &:nth-of-type(3) {
-      h4 {
-        &::after {
-          content: "a-z";
-        }
-      }
-    }
-
-    &:nth-of-type(4) {
-      h4 {
-        &::after {
-          content: "A-Z";
-        }
       }
     }
   }
