@@ -1,12 +1,56 @@
 ---
 import Layout from "@layouts/Main.astro";
+import { IconSelectedText, IconArrowRight } from "@lib/Icons";
+import { svgToBase64Url } from "@utils/IconsService";
+import { COLORS } from "@config/global";
+
+const selected = svgToBase64Url(IconSelectedText, {color: COLORS.success});
+const arrow = svgToBase64Url(IconArrowRight, {color: COLORS.fontColor});
 ---
 
 <Layout footer={false}>
   <h3>Backgrounds</h3>
+  <section>
+    <div>
+      <input type="radio" name="static" id="reset">
+      <a href="#">Code</a>
+    </div>
+    <div>
+      <input type="radio" name="static" id="bg1">
+      <a href="#">Code</a>
+    </div>
+  </section>
 </Layout>
 
-<style>
+<!-- 
+
+
+.dotted {
+  padding: 2.25em 1.6875em;
+  background-image: -webkit-repeating-radial-gradient(center center, rgba(0,0,0,.2), rgba(0,0,0,.2) 1px, transparent 1px, transparent 100%);
+  background-size: 30px 30px;
+  }
+
+html{
+      background: 
+radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%),
+    radial-gradient(ellipse at 70% 60%, rgba(195,224,96,1) 0%,rgba(195,224,96,0) 30%),
+    radial-gradient(ellipse at bottom left, rgba(0,163,203,1) 0%, rgba(0,163,203,0) 70%),
+    linear-gradient(135deg, rgba(18,46,119,0) 0%,rgba(18,46,119,0) 75%,rgba(18,46,119,1) 100%),
+    linear-gradient(to right, rgba(98,87,147,1) 0%, rgba(213,93,100,1) 17%, rgba(228,145,41,1) 74%, rgba(192,103,28,1) 100%);
+   background-blend-mode: 
+     screen, 
+     hue,
+     color,
+     overlay,
+     normal;
+     height: 100%;
+     /* background-image: repeating-radial-gradient(circle at 0 0, transparent 0, #f3f6f6 50px ), repeating-linear-gradient( #56d1b355, #56d1b3 ); */
+}
+
+-->
+
+<style define:vars={{ selected, arrow }}>
   html {
     /* background: rgb(var(--bg-dark)); */
     /* background: -webkit-radial-gradient(
@@ -18,4 +62,99 @@ import Layout from "@layouts/Main.astro";
     );
     background-size: 30px 30px; */
   }
+
+  div{
+    overflow: clip;
+    position: relative;
+    width: max-content;
+    border-radius: 15px;
+  }
+  
+  input{
+    position: relative;
+    margin: 0;
+    appearance: none;
+    width: 300px;
+    aspect-ratio: 1;
+    background: var(--lg);
+    color: inherit;
+    border-radius: inherit;
+    border: 1px solid rgb(var(--accent-light));
+    transition: box-shadow 0.8s;
+    
+    &::before{
+      content: '';
+      position: absolute;
+      inset: 50%;
+      background: var(--selected);
+      background-size: 20% 20%;
+      transition: inset 0.2s;
+    }
+  }
+
+  input::after, a{
+    position: absolute;
+    font-size: 20px;
+    text-decoration: none;
+    top: 0;
+    left: 0;
+    width: 140%;
+    height: 70%;
+    color: inherit;
+    letter-spacing: 4px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: inline-flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 5px;
+    padding: 20%;
+    box-sizing: border-box;
+    rotate: -45deg;
+    border: 1px solid rgb(var(--accent-light));
+    transition: transform 0.2s;
+  }
+  
+  input::after{
+    content: 'Preview';
+    align-content: flex-end;
+    transform: translateX(-18%) translateY(-155%);
+  }
+
+  a{
+    align-content: flex-start;
+    transform: translateX(-18%) translateY(145%);
+
+    &::after{
+      content: var(--arrow);
+    }
+  }
+
+  div:hover{
+    input::after{
+      transform: translateX(-18%) translateY(-55%);
+    }
+    a{
+      transform: translateX(-18%) translateY(45%);
+    }
+  }
+
+  input:checked{
+    box-shadow: inset 0 0 30px 10px rgb(var(--success));
+
+    &::before{
+      inset: 0;
+    }
+  }
+
+  html:has(#reset:checked){
+    background: rgb(var(--bg-dark));
+  }
+
+  html:has(#bg1:checked){
+    background: rgb(var(--bg-light));
+  }
+
+  /* section{
+    opacity: 0.1;
+  } */
 </style>
