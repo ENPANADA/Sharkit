@@ -1,28 +1,62 @@
 ---
 import Layout from "@layouts/Main.astro";
-import { IconSelectedText, IconArrowRight } from "@lib/Icons";
+import { IconSelectedText } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
 
-const selected = svgToBase64Url(IconSelectedText, {color: COLORS.success});
-const arrow = svgToBase64Url(IconArrowRight, {color: COLORS.fontColor});
+const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
 ---
 
 <Layout footer={false}>
-  <h3>Backgrounds</h3>
-  <section>
-    <div>
-      <input type="radio" name="static" id="reset">
-      <a href="#">Code</a>
-    </div>
-    <div>
-      <input type="radio" name="static" id="bg1">
-      <a href="#">Code</a>
-    </div>
-  </section>
+  <h3>Background Snippets</h3>
+  <p>A simple collection of <span>Vanilla CSS</span> backgrounds, ready to use.</p>
+  <div>
+    <aside>
+      <label>
+        Hide <input type="checkbox" />
+      </label>
+      <label>
+        Reset <input type="radio" name="bg-statics" id="reset" checked />
+      </label>
+    </aside>
+    <section>
+      <div>
+        <input type="radio" name="bg-statics" id="bg1" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" id="bg2" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" />
+        <button>Copy code</button>
+      </div>
+      <div>
+        <input type="radio" name="bg-statics" />
+        <button>Copy code</button>
+      </div>
+    </section>
+  </div>
 </Layout>
 
-<!-- 
+<!--
 
 
 .dotted {
@@ -32,14 +66,14 @@ const arrow = svgToBase64Url(IconArrowRight, {color: COLORS.fontColor});
   }
 
 html{
-      background: 
+      background:
 radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 100%),
     radial-gradient(ellipse at 70% 60%, rgba(195,224,96,1) 0%,rgba(195,224,96,0) 30%),
     radial-gradient(ellipse at bottom left, rgba(0,163,203,1) 0%, rgba(0,163,203,0) 70%),
     linear-gradient(135deg, rgba(18,46,119,0) 0%,rgba(18,46,119,0) 75%,rgba(18,46,119,1) 100%),
     linear-gradient(to right, rgba(98,87,147,1) 0%, rgba(213,93,100,1) 17%, rgba(228,145,41,1) 74%, rgba(192,103,28,1) 100%);
-   background-blend-mode: 
-     screen, 
+   background-blend-mode:
+     screen,
      hue,
      color,
      overlay,
@@ -50,7 +84,7 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
 
 -->
 
-<style define:vars={{ selected, arrow }}>
+<style define:vars={{ selected }}>
   html {
     /* background: rgb(var(--bg-dark)); */
     /* background: -webkit-radial-gradient(
@@ -61,29 +95,151 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
       transparent 100%
     );
     background-size: 30px 30px; */
+    /* background-attachment: fixed; */
+
+    background-repeat: initial;
   }
 
-  div{
-    overflow: clip;
-    position: relative;
-    width: max-content;
-    border-radius: 15px;
+  h3{
+    font-family: 'Archivo Black';
+    font-size: 35px;
+    background: var(--lg3);
+    background-clip: text;
+    color: rgb(var(--accent-light) / 15%);
+    text-shadow: inset 0 0 10px red;
+    margin: 0;
+  }
+
+  p{
+    font-size: 18px;
+    font-weight: 300;
+    margin: 25px 0;
+
+    span{
+      color: rgb(var(--accent-light));
+    }
   }
   
-  input{
+  h3, p{
+    text-align: center;
+  }
+
+  div:first-of-type {
+    position: relative;
+  }
+
+  aside {
+    position: sticky;
+    top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    z-index: 1;
+    background: var(--lg7);
+    padding: 10px 25px;
+    border-radius: 40px;
+    overflow: clip;
+    width: max-content;
+    margin: 50px auto;
+    backdrop-filter: blur(12px);
+  }
+
+  label {
+    padding: 3px 15px;
+    border-radius: 20px;
+    background: rgb(var(--bg-dark));
+    border: 2px solid rgb(var(--accent-light) / 60%);
+    cursor: pointer;
+    font-family: "Roboto";
+    font-size: 18px;
+    letter-spacing: 2px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    user-select: none;
+    box-shadow: 4px 4px 8px rgb(var(--bg-dark));
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: rgb(var(--accent-light));
+    }
+  }
+
+  input[type="checkbox"] {
+    appearance: none;
+    border-radius: inherit;
+    border: 3px solid rgb(var(--accent-dark));
+    outline: 2px solid rgb(var(--accent-light));
+    background: var(--lg4);
+    width: 40px;
+    aspect-ratio: 2/1;
+    position: relative;
+    cursor: inherit;
+    overflow: clip;
+
+    &::before {
+      content: "";
+      position: absolute;
+      aspect-ratio: 1;
+      height: 100%;
+      inset: 0;
+      border: 2px solid rgb(var(--accent-light) / 40%);
+      background: var(--lg2);
+      box-sizing: border-box;
+      background-size: 100% 200%;
+      border-radius: inherit;
+      box-shadow: 0 0 5px 5px rgb(var(--accent-secondary));
+      transition:
+        left 0.2s ease-in,
+        rotate 0.2s ease-in,
+        box-shadow 1s,
+        border-color 0.5s,
+        background-position 0.2s linear;
+    }
+  }
+
+  input[type="checkbox"]:checked::before {
+    left: 55%;
+    border-color: rgb(var(--accent-light));
+    rotate: 0.5turn;
+    background-position: 20%;
+    box-shadow: 0 0 10px 5px rgb(var(--accent));
+  }
+
+  label input[type="radio"] {
+    display: none;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    transition: opacity 0.5s;
+  }
+
+  section div {
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 1px rgb(var(--accent-secondary));
+    overflow: clip;
+  }
+
+  input[type="radio"]:not(#reset) {
     position: relative;
     margin: 0;
     appearance: none;
-    width: 300px;
-    aspect-ratio: 1;
-    background: var(--lg);
+    width: 100%;
+    height: 100%;
+    background-color: rgb(var(--bg));
     color: inherit;
     border-radius: inherit;
     border: 1px solid rgb(var(--accent-light));
     transition: box-shadow 0.8s;
-    
-    &::before{
-      content: '';
+
+    &::before {
+      content: "";
       position: absolute;
       inset: 50%;
       background: var(--selected);
@@ -92,7 +248,8 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
     }
   }
 
-  input::after, a{
+  button,
+  input[type="radio"]:not(#reset)::after {
     position: absolute;
     font-size: 20px;
     text-decoration: none;
@@ -110,51 +267,134 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
     padding: 20%;
     box-sizing: border-box;
     rotate: -45deg;
-    border: 1px solid rgb(var(--accent-light));
-    transition: transform 0.2s;
+    cursor: pointer;
+    border: 1px dotted rgb(var(--accent-light));
+    transition:
+      transform 0.2s,
+      background-color 0.2s;
   }
-  
-  input::after{
-    content: 'Preview';
+
+  input[type="radio"]:not(#reset)::after {
+    content: "Preview";
     align-content: flex-end;
     transform: translateX(-18%) translateY(-155%);
   }
 
-  a{
+  button {
     align-content: flex-start;
     transform: translateX(-18%) translateY(145%);
-
-    &::after{
-      content: var(--arrow);
-    }
   }
 
-  div:hover{
-    input::after{
+  section div:hover {
+    input[type="radio"]:not(#reset)::after {
       transform: translateX(-18%) translateY(-55%);
     }
-    a{
+
+    button {
       transform: translateX(-18%) translateY(45%);
+    }
+
+    button:hover,
+    &:not(:has(button:hover)) input[type="radio"]:not(#reset)::after {
+      background-color: rgba(0, 0, 0, 0.8);
     }
   }
 
-  input:checked{
+  input[type="radio"]:not(#reset):checked {
     box-shadow: inset 0 0 30px 10px rgb(var(--success));
 
-    &::before{
+    &::before {
       inset: 0;
     }
   }
 
-  html:has(#reset:checked){
+  html:has(input[type="checkbox"]:checked) section {
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  html:has(#reset:checked) {
     background: rgb(var(--bg-dark));
   }
 
-  html:has(#bg1:checked){
-    background: rgb(var(--bg-light));
+  html:has(#bg1:checked),
+  #bg1 {
+    background: var(--lg);
   }
 
-  /* section{
-    opacity: 0.1;
-  } */
+  html:has(#bg2:checked),
+  #bg2 {
+    background: radial-gradient(
+        ellipse at center,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 100%
+      ),
+      radial-gradient(
+        ellipse at 70% 60%,
+        rgba(195, 224, 96, 1) 0%,
+        rgba(195, 224, 96, 0) 30%
+      ),
+      radial-gradient(
+        ellipse at bottom left,
+        rgba(0, 163, 203, 1) 0%,
+        rgba(0, 163, 203, 0) 70%
+      ),
+      linear-gradient(
+        135deg,
+        rgba(18, 46, 119, 0) 0%,
+        rgba(18, 46, 119, 0) 75%,
+        rgba(18, 46, 119, 1) 100%
+      ),
+      linear-gradient(
+        to right,
+        rgba(98, 87, 147, 1) 0%,
+        rgba(213, 93, 100, 1) 17%,
+        rgba(228, 145, 41, 1) 74%,
+        rgba(192, 103, 28, 1) 100%
+      );
+    background-blend-mode: screen, hue, color, overlay, normal;
+  }
 </style>
+
+<script>
+  const bgs = document.querySelector("section")!;
+  const formattingCSS = (cssText: string) => {
+    const css = cssText.split("{");
+    const formattedStyles = css[1]!
+      .replace("}", "")
+      .replace(/, radial/g, ",\n\t\tradial")
+      .replace(/, linear/g, ",\n\t\tlinear")
+      .split(";")
+      .filter((rule) => rule.trim() !== "")
+      .map((regla) => `\t${regla.trim()};`)
+      .join("\n");
+    return `html {\n${formattedStyles}\n\tmin-height: 100vh;\n}`;
+  };
+
+  const getStyleById = (styles = "") => {
+    if (styles.length === 0) return;
+    Array.from(document.styleSheets).some((sheet) => {
+      Array.from(sheet.cssRules).some((rule) => {
+        if (rule instanceof CSSStyleRule && rule.selectorText.includes(styles))
+          styles = formattingCSS(rule.cssText);
+      });
+    });
+    return styles;
+  };
+
+  bgs.addEventListener("click", (e) => {
+    const btn = e.target as HTMLButtonElement;
+    if (btn.localName !== "button") return;
+    const styles = getStyleById(btn.previousElementSibling?.id);
+    styles
+      ? navigator.clipboard
+          .writeText(styles)
+          .then(() => {
+            alert("Estilos copiados al portapapeles");
+          })
+          .catch((err) => {
+            console.error("Error al copiar los estilos: ", err);
+          })
+      : alert("Styles not found ❌");
+  });
+</script>
