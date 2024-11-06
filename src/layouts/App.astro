@@ -1,7 +1,6 @@
 ---
 import { IconDorsalLogo } from "@lib/Icons";
 import { svgToBase64 } from "@utils/IconsService";
-import { COLORS } from "@config/global";
 import "@fontsource/archivo-black";
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
@@ -18,8 +17,7 @@ import "@fontsource/roboto/700.css";
       rel="icon"
       type="image/svg+xml"
       href={svgToBase64(IconDorsalLogo, {
-        stroke: COLORS.accentLight,
-        strokeWidth: "12px",
+        strokeWidth: "12",
       })}
     />
     <meta name="generator" content={Astro.generator} />
@@ -115,7 +113,7 @@ import "@fontsource/roboto/700.css";
     background-repeat: no-repeat;
     min-width: 100%;
     min-height: 100vh;
-    scroll-behavior: smooth;
+    /* scroll-behavior: smooth; */
   }
 
   body {

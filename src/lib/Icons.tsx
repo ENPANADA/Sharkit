@@ -155,13 +155,20 @@ export const Wave = (props?: IconProp) => (
 );
 
 export const IconDorsalLogo = (props?: IconProp) => (
-  <svg viewBox="0 0 512 328" width="513" height="328" {...props} {...svgUri}>
+  <svg viewBox="0 0 512 328" strokeWidth="1" {...props} {...svgUri}>
+    <defs>
+      <linearGradient id="lg">
+        <stop offset="10%" stop-color="#883aea" />
+        <stop offset="90%" stop-color="#63e" />
+      </linearGradient>
+    </defs>
     <path
       fill="#08001e"
+      stroke="#e0ccfa"
       d="m390.5 292.5q-10.6-2.8-21-6.5-60.4-26-124-43-49.1-10.9-99-10.5 11.8-54.1 3.5-109-8.9-62.9-29.5-123 91.3-6.1 167 44.5 65.5 49.1 87.5 128.5 16.2 58.4 15.5 119z"
     />
     <path
-      fill="#883aea"
+      fill="url(#lg)"
       d="m146.5 232.5q49.9-0.4 99 10.5 63.6 17 124 43 10.4 3.7 21 6.5 59 20.7 108-17.5 6.8-5.5 13-11.5 0 1.5 0 3-40.2 75.7-125 56.5-11.6-2.3-23-5-54.5-16-108-35-55-18.9-113-24-61.7-5.6-117 22-13.8 8.7-26 19.5 0-1 0-2 24.3-32.5 62-48.5 41-16 85-17.5z"
     />
   </svg>
