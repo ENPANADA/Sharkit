@@ -1,47 +1,127 @@
 ---
-import { IconDorsalLogo } from "@lib/Icons";
+import { IconDorsalLogo, IconCaretDown, IconHome } from "@lib/Icons";
+import {
+  ROOT_URL,
+  HOME_URL,
+  COMPONENT_URL,
+  HOME_BACKGROUND_URL,
+} from "@config/routes";
 ---
 
 <header>
-  <IconDorsalLogo />
-  <h1>Shar<span>kit</span></h1>
+  <div>
+    <a href={ROOT_URL}>
+      <IconDorsalLogo />
+      <h1>Shar<span>kit</span></h1>
+    </a>
+    <nav>
+      <a href={HOME_URL}><IconHome /></a>
+      <div>
+        <button>Collections <IconCaretDown /></button>
+        <menu>
+          <a href={COMPONENT_URL}>Components</a>
+          <a href={HOME_BACKGROUND_URL}>Backgrounds</a>
+        </menu>
+      </div>
+    </nav>
+  </div>
 </header>
 
 <style>
   header {
-    max-width: var(--max-width-content);
-    box-sizing: border-box;
+    background: radial-gradient(
+        at right top,
+        transparent 5%,
+        rgb(var(--accent)) 10%,
+        rgb(var(--accent-dark)) 11%,
+        rgb(var(--accent)) 12%,
+        transparent 20%,
+        rgb(var(--accent-secondary)) 25%,
+        rgb(var(--accent-light)) 26%,
+        rgb(var(--accent-secondary)) 27%,
+        transparent 40%,
+        rgb(var(--accent-dark)) 45%,
+        rgb(var(--accent)) 46%,
+        rgb(var(--accent-dark)) 47%,
+        transparent 65%
+      ),
+      linear-gradient(
+        165deg,
+        transparent,
+        rgb(var(--accent-dark)) 10%,
+        rgb(var(--accent)) 11%,
+        rgb(var(--accent-dark)) 12%,
+        transparent 35%,
+        rgb(var(--accent-secondary)) 40%,
+        rgb(var(--accent-light)) 41%,
+        rgb(var(--accent-secondary)) 42%,
+        transparent 55%,
+        rgb(var(--accent)) 60%,
+        rgb(var(--accent-dark)) 61%,
+        rgb(var(--accent)) 62%,
+        transparent 70%
+      ),
+      rgb(var(--bg-dark));
+    border-bottom-left-radius: 18px;
+    border-bottom-right-radius: 18px;
+    box-shadow: 0 0 0px 1px rgb(var(--accent-light));
     position: relative;
-    padding-block: 35px;
-    padding-inline: 15px;
-    margin-inline: auto;
-    margin-block: 30px;
+    transition: opacity 0.5s;
+    z-index: 1;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background-color: rgb(var(--bg-dark) / 30%);
+      backdrop-filter: blur(1px);
+      z-index: -1;
+    }
   }
 
-  svg {
+  header > div {
+    max-width: var(--max-width-content);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 25px;
+    margin-inline: auto;
+
+    & > a {
+      position: relative;
+    }
+  }
+
+  a,
+  button {
+    color: inherit;
+    text-decoration: none;
+    border: 0;
+  }
+
+  div > a svg {
     position: absolute;
-    height: 160px;
-    width: auto;
-    top: 0;
-    left: 50%;
-    transform: translatex(-50%);
-    z-index: -1;
+    height: 50px;
+    top: -50%;
+    left: -12px;
+    padding: 5px 10px;
+    border-radius: 16px 10px;
     overflow: visible;
-    path:first-of-type{
+
+    path:first-of-type {
       filter: drop-shadow(0 0 10px rgb(var(--accent-light)));
     }
-    path:last-of-type{
-      filter: drop-shadow(0 0 10px rgb(var(--accent-secondary)));
+    path:last-of-type {
+      filter: drop-shadow(5px 5px 10px rgb(var(--bg-dark)));
     }
   }
 
   h1 {
-    font-family: 'Archivo Black', system-ui, sans-serif;
-    font-size: 60px;
-    text-align: center;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    letter-spacing: 5px;
+    font-family: "Archivo Black", system-ui, sans-serif;
+    font-size: 21px;
+    letter-spacing: -1px;
     transform: skewX(-20deg);
     margin: 0;
   }
@@ -58,5 +138,101 @@ import { IconDorsalLogo } from "@lib/Icons";
     background-image: var(--span-gradient);
     background-clip: text;
     background-color: rgb(var(--font-color));
+  }
+
+  nav {
+    display: inline-flex;
+    gap: 10px;
+
+    div {
+      position: relative;
+      --height-align: 5px;
+
+      &::before {
+        visibility: hidden;
+        content: "";
+        position: absolute;
+        bottom: calc(-1 * var(--height-align));
+        left: 50%;
+        translate: -50%;
+        border: var(--height-align) solid transparent;
+        border-bottom-color: rgb(var(--accent-light));
+      }
+    }
+
+    & > a,
+    button {
+      font-weight: 300;
+      padding: 5px 15px;
+      border-radius: 5px;
+      background-color: rgb(var(--bg-dark) / 60%);
+      height: 100%;
+    }
+
+    button {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+  }
+
+  menu {
+    visibility: hidden;
+    margin: 0;
+    padding: 10px;
+    position: absolute;
+    top: calc(100% + var(--height-align));
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background-color: rgb(var(--bg-dark));
+    box-shadow: inset 0 0 0 1px rgb(var(--accent-light));
+    border-radius: 10px;
+
+    transition: visibility 1s;
+
+    a {
+      padding: 5px 10px;
+      letter-spacing: 1px;
+      font-weight: 300;
+      border-radius: 5px;
+      border: 2px solid rgb(var(--accent-dark));
+      background-color: rgb(var(--bg));
+      position: relative;
+      z-index: 1;
+
+      &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        right: 100%;
+        border-radius: inherit;
+        background-color: rgb(var(--accent-secondary));
+        z-index: -1;
+        transition: inset 0.8s;
+      }
+
+      &:hover::before {
+        right: 0;
+        transition: inset 0.2s;
+      }
+    }
+  }
+
+  div > a:hover svg,
+  nav > a:hover,
+  nav:has(menu:hover) button,
+  nav button:hover {
+    background-color: rgb(var(--bg-dark) / 80%);
+    box-shadow: inset 0 0 0px 1px rgb(var(--accent-light));
+  }
+
+  div:has(button:hover),
+  div:has(menu:hover) {
+    &::before,
+    menu {
+      visibility: visible;
+    }
   }
 </style>

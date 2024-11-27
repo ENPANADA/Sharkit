@@ -1,3 +1,4 @@
+export const ROOT_URL = '/';
 export const HOME_URL = '/';
 export const HOME_COMPONENT_URL = '/components';
 export const HOME_BACKGROUND_URL = '/backgrounds';
