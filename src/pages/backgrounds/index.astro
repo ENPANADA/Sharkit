@@ -3,6 +3,7 @@ import Layout from "@layouts/Main.astro";
 import { IconSelectedText } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
+import data from "@data/collections/backgrounds.json";
 import "@styles/Backgrounds.css";
 
 const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
@@ -26,8 +27,22 @@ const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
       </label>
     </aside>
     <section>
-      <div>
-        <input type="radio" name="bg-statics" id="bg1" />
+      {
+        data.static.map((bg) => (
+          <div>
+            <input
+              id={bg.id}
+              type="radio"
+              name="bg-statics"
+              style={`--size:${bg.previewSize}px`}
+              {...(bg.themeLight ? { "data-theme-light": "" } : {})}
+            />
+            <button>Copy code</button>
+          </div>
+        ))
+      }
+      <!-- <div>
+        <input type="radio" name="bg-statics" id="bg1" data-theme-light/>
         <button>Copy code</button>
       </div>
       <div>
@@ -39,7 +54,7 @@ const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
         <button>Copy code</button>
       </div>
       <div>
-        <input type="radio" name="bg-statics" />
+        <input type="radio" name="bg-statics" id="bg4" />
         <button>Copy code</button>
       </div>
       <div>
@@ -57,7 +72,7 @@ const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
       <div>
         <input type="radio" name="bg-statics" />
         <button>Copy code</button>
-      </div>
+      </div> -->
     </section>
   </div>
 </Layout>
@@ -93,9 +108,9 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
 <style define:vars={{ selected }}>
   html:has([data-theme-light]:checked) {
     main {
-      --font-color: 25 25 25;
       /* --bg: 19 21 26; */
       /* --bg-light: 30 32 43; */
+      --font-color: 25 25 25;
       --bg-dark: 255 255 255;
       --accent-light: 49 10 101;
       --accent-dark: 224 204 250;
@@ -150,8 +165,9 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
     font-size: 40px;
     background: var(--lg3);
     background-clip: text;
-    color: rgb(var(--accent-light) / 15%);
+    color: rgb(var(--accent-light) / 40%);
     margin-block: 60px 20px;
+    filter: drop-shadow(1px 1px 1px rgb(var(--bg-dark)));
   }
 
   p {
@@ -185,13 +201,13 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
     justify-content: center;
     gap: 15px;
     z-index: 1;
-    background: var(--lg7);
-    padding: 8px 20px;
+    background-color: rgb(var(--bg-dark) / 10%);
+    padding: 12px 20px;
     border-radius: 40px;
     overflow: clip;
     width: max-content;
     margin: 40px auto;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(3px);
   }
 
   label {

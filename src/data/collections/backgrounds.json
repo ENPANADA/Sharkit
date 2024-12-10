@@ -1,0 +1,35 @@
+{
+  "static": [
+    {
+      "id": "bg1",
+      "previewSize": "40",
+      "fixed": "true",
+      "themeLight": true
+    },
+    {
+      "id": "bg2",
+      "previewSize": "300",
+      "fixed": "true",
+      "themeLight": false
+    },
+    {
+      "id": "bg3",
+      "previewSize": "400",
+      "fixed": "true",
+      "themeLight": false
+    },
+    {
+      "id": "bg4",
+      "previewSize": "133",
+      "fixed": "true",
+      "themeLight": false
+    },
+    {
+      "id": "bg5",
+      "previewSize": "200",
+      "fixed": "true",
+      "themeLight": false
+    }
+  ],
+  "dynamic": []
+}

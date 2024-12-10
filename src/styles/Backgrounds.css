@@ -1,6 +1,16 @@
 html:has(#bg1:checked),
 #bg1 {
-  background: var(--lg);
+  --size: 50px;
+  --color1: #fad4fd;
+  --color2: #c7c8ff;
+
+  background:
+    linear-gradient(25deg, var(--color1) 25%, transparent 25%),
+    linear-gradient(-25deg, var(--color1) 25%, transparent 25%),
+    linear-gradient(25deg, transparent 75%, var(--color1) 75%) var(--size) 0,
+    linear-gradient(-25deg, transparent 75%, var(--color1) 75%) var(--size) 0,
+    var(--color2);
+  background-size: calc(var(--size) * 2) var(--size);
 }
 
 html:has(#bg2:checked),
@@ -39,5 +49,170 @@ html:has(#bg2:checked),
 
 html:has(#bg3:checked),
 #bg3 {
-  background: rgb(var(--bg-dark));
+  background: radial-gradient(
+      circle at left bottom,
+      transparent 10%,
+      blue 10% 20%,
+      transparent 20% 30%,
+      blue 30% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at right top,
+      transparent 10%,
+      blue 10% 20%,
+      transparent 20% 30%,
+      blue 30% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at right bottom,
+      transparent 10%,
+      blue 10% 20%,
+      transparent 20% 30%,
+      blue 30% 40%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at left top,
+      transparent 10%,
+      blue 10% 20%,
+      transparent 20%
+    ),
+    radial-gradient(circle at center center, green, cyan);
+  background-size: 50px 50px;
+}
+
+html:has(#bg4:checked),
+#bg4 {
+  --size: 200px;
+  --color1: #969300;
+  --color2: #001031;
+  --color3: #1d3100;
+  --r: 2.5%; /*radio centers*/
+  --wv: 15; /* num of waves*/
+  --incr: calc((44.66% - (var(--r) * 2)) / var(--wv)); /* increment*/
+  --area: var(--size) var(--size);
+  --waves: transparent var(--r),
+    var(--color2) var(--r) calc(var(--r) + var(--incr)),
+    var(--color3) calc(var(--r) + var(--incr)) calc(var(--r) + var(--incr) * 2),
+    var(--color2) calc(var(--r) + var(--incr) * 2)
+      calc(var(--r) + var(--incr) * 3),
+    var(--color3) calc(var(--r) + var(--incr) * 3)
+      calc(var(--r) + var(--incr) * 4),
+    var(--color2) calc(var(--r) + var(--incr) * 4)
+      calc(var(--r) + var(--incr) * 5),
+    var(--color3) calc(var(--r) + var(--incr) * 5)
+      calc(var(--r) + var(--incr) * 6),
+    var(--color2) calc(var(--r) + var(--incr) * 6)
+      calc(var(--r) + var(--incr) * 7),
+    var(--color3) calc(var(--r) + var(--incr) * 7)
+      calc(var(--r) + var(--incr) * 8),
+    var(--color2) calc(var(--r) + var(--incr) * 8)
+      calc(var(--r) + var(--incr) * 9),
+    var(--color3) calc(var(--r) + var(--incr) * 9)
+      calc(var(--r) + var(--incr) * 10),
+    var(--color2) calc(var(--r) + var(--incr) * 10)
+      calc(var(--r) + var(--incr) * 11),
+    var(--color3) calc(var(--r) + var(--incr) * 11)
+      calc(var(--r) + var(--incr) * 12),
+    var(--color2) calc(var(--r) + var(--incr) * 12)
+      calc(var(--r) + var(--incr) * 13),
+    var(--color3) calc(var(--r) + var(--incr) * 13)
+      calc(var(--r) + var(--incr) * 14),
+    var(--color2) calc(var(--r) + var(--incr) * 14)
+      calc(var(--r) + var(--incr) * 15),
+    transparent calc(var(--r) + var(--incr) * var(--wv));
+  background:
+    radial-gradient(
+        circle at center center,
+        var(--color1) calc(var(--r) * 3),
+        transparent 0
+      )
+      calc(var(--size) / 4) calc(var(--size) / 4) / calc(var(--size) / 2)
+      calc(var(--size) / 2),
+    radial-gradient(circle at center top, var(--waves)) 0 calc(var(--size) / 2) /
+      var(--area),
+    radial-gradient(circle at center bottom, var(--waves)) calc(var(--size) / 2)
+      calc(var(--size) / 2) / var(--area),
+    radial-gradient(circle at center top, var(--waves)) 0 0 / var(--area),
+    radial-gradient(circle at center bottom, var(--waves)) calc(var(--size) / 2)
+      0 / var(--area);
+  background-color: var(--color3);
+}
+
+html:has(#bg5:checked),
+#bg5 {
+  --size: 300px;
+  --color1: #8d008d;
+  --color2: #000441;
+  --color3: #33004d;
+  --wv: 15; /* num of waves */
+  --r: 1.6%; /*radio center */
+  --incr: calc((29.8% - (var(--r) * 2)) / var(--wv)); /* increment  */
+  --area: var(--size) var(--size);
+  /*half circle*/
+  --hc: transparent var(--r),
+    var(--color2) calc(var(--r)) calc(var(--r) + var(--incr)),
+    var(--color3) calc(var(--r) + var(--incr)) calc(var(--r) + var(--incr) * 2),
+    var(--color2) calc(var(--r) + var(--incr) * 2)
+      calc(var(--r) + var(--incr) * 3),
+    var(--color3) calc(var(--r) + var(--incr) * 3)
+      calc(var(--r) + var(--incr) * 4),
+    var(--color2) calc(var(--r) + var(--incr) * 4)
+      calc(var(--r) + var(--incr) * 5),
+    var(--color3) calc(var(--r) + var(--incr) * 5)
+      calc(var(--r) + var(--incr) * 6),
+    var(--color2) calc(var(--r) + var(--incr) * 6)
+      calc(var(--r) + var(--incr) * 7),
+    var(--color3) calc(var(--r) + var(--incr) * 7)
+      calc(var(--r) + var(--incr) * 8),
+    var(--color2) calc(var(--r) + var(--incr) * 8)
+      calc(var(--r) + var(--incr) * 9),
+    var(--color3) calc(var(--r) + var(--incr) * 9)
+      calc(var(--r) + var(--incr) * 10),
+    var(--color2) calc(var(--r) + var(--incr) * 10)
+      calc(var(--r) + var(--incr) * 11),
+    var(--color3) calc(var(--r) + var(--incr) * 11)
+      calc(var(--r) + var(--incr) * 12),
+    var(--color2) calc(var(--r) + var(--incr) * 12)
+      calc(var(--r) + var(--incr) * 13),
+    var(--color3) calc(var(--r) + var(--incr) * 13)
+      calc(var(--r) + var(--incr) * 14),
+    var(--color2) calc(var(--r) + var(--incr) * 14)
+      calc(var(--r) + var(--incr) * 15),
+    transparent calc(var(--r) + var(--incr) * var(--wv));
+  background:
+    radial-gradient(
+        circle at center center,
+        var(--color1) calc(var(--r) * 5),
+        transparent calc(var(--r) * 5)
+      )
+      calc(var(--size) / 6) calc(var(--size) / 6) / calc(var(--size) / 3)
+      calc(var(--size) / 3),
+    radial-gradient(circle at right, var(--hc)) calc(var(--size) / 3)
+      calc(var(--size) / -6) / var(--area),
+    radial-gradient(circle at right, var(--hc)) 0 calc(var(--size) / 2) /
+      var(--area),
+    radial-gradient(circle at bottom, var(--hc)) calc((var(--size) / 2))
+      calc(var(--size) / -3) / var(--area),
+    radial-gradient(circle at left, var(--hc)) calc(var(--size) / 1.5)
+      calc(var(--size) / -6) / var(--area),
+    radial-gradient(circle at bottom, var(--hc)) calc(var(--size) / 6)
+      calc(var(--size) / 3) / var(--area),
+    radial-gradient(circle at right, var(--hc)) calc(var(--size) / -3)
+      calc(var(--size) / 6) / var(--area),
+    radial-gradient(circle at top, var(--hc)) calc(var(--size) / 6)
+      calc(var(--size) / -3) / var(--area),
+    radial-gradient(circle at top, var(--hc)) calc(var(--size) / -6)
+      calc(var(--size) / 3) / var(--area),
+    radial-gradient(circle at left, var(--hc)) calc(var(--size) / 3)
+      calc(var(--size) / -2) / var(--area),
+    radial-gradient(circle at top, var(--hc)) calc(var(--size) / -2) 0 /
+      var(--area),
+    radial-gradient(circle at bottom, var(--hc)) calc(var(--size) / -6) 0 /
+      var(--area),
+    radial-gradient(circle at left, var(--hc)) 0 calc(var(--size) / 6) /
+      var(--area);
+  background-color: var(--color3);
 }
