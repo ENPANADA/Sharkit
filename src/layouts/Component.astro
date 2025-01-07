@@ -10,7 +10,7 @@ import {
 
 const codes = await Astro.glob("@data/codes/**/*.md");
 const [data, index] = getComponentDataByLink(
-  Astro.url.pathname.split("/").at(-1) as string
+  Astro.url.pathname.split("/").filter(item => item.trim() !== "").at(-1) as string
 );
 const [previous, next] = getPreviousAndNextComponentsDataByIndex(index);
 ---
