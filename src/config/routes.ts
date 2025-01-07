@@ -1,7 +1,7 @@
-export const ROOT_URL = '/';
-export const HOME_URL = '/';
-export const HOME_COMPONENT_URL = '/components';
-export const HOME_BACKGROUND_URL = '/backgrounds';
+export const ROOT_URL = '/Sharkit'; // to deploy
+export const HOME_URL = ROOT_URL + '/';
+export const HOME_COMPONENT_URL = ROOT_URL + '/components';
+export const HOME_BACKGROUND_URL = ROOT_URL + '/backgrounds';
 
 export const COMPONENT_URL = HOME_COMPONENT_URL + '/';
 
