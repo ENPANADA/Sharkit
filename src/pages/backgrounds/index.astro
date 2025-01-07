@@ -3,7 +3,7 @@ import Layout from "@layouts/Main.astro";
 import { IconSelectedText } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
-import data from "@data/collections/backgrounds.json";
+import backgrounds from "@data/collections/backgrounds.json";
 import "@styles/Backgrounds.css";
 
 const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
@@ -28,7 +28,7 @@ const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
     </aside>
     <section>
       {
-        data.static.map((bg) => (
+        backgrounds.static.map((bg) => (
           <div>
             <input
               id={bg.id}

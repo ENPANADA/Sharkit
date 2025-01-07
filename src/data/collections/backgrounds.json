@@ -14,7 +14,7 @@
     },
     {
       "id": "bg3",
-      "previewSize": "400",
+      "previewSize": "50",
       "fixed": "true",
       "themeLight": false
     },
@@ -27,6 +27,12 @@
     {
       "id": "bg5",
       "previewSize": "200",
+      "fixed": "true",
+      "themeLight": false
+    },
+    {
+      "id": "bg6",
+      "previewSize": "65",
       "fixed": "true",
       "themeLight": false
     }

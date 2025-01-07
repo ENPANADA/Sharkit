@@ -11,4 +11,6 @@ export default defineConfig({
       wrap: true,
     },
   },
+  site: 'https://enpanada.github.io',
+  base: 'Sharkit',
 });
