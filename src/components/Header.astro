@@ -173,6 +173,10 @@ import {
       display: inline-flex;
       align-items: center;
       gap: 5px;
+
+      svg{
+        transition: rotate 0.2s;
+      }
     }
   }
 
@@ -233,6 +237,10 @@ import {
     &::before,
     menu {
       visibility: visible;
+    }
+
+    button svg{
+      rotate: -0.25turn;
     }
   }
 </style>

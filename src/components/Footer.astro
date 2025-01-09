@@ -2,7 +2,7 @@
 import { IconGitHub, Wave } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
-import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL, HOME_BACKGROUND_URL } from "@config/routes";
+import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL, HOME_BACKGROUND_URL, REPO_URL } from "@config/routes";
 
 const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
 ---
@@ -32,7 +32,8 @@ const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
         <aside>
           <h4>Follow</h4>
           <ul>
-            <li><a href={ENPANADA_URL}>GitHub</a></li>
+            <li><a href={REPO_URL}>Sharkit</a></li>
+            <li><a href={ENPANADA_URL}>Enpanada</a></li>
           </ul>
         </aside>
       </section>

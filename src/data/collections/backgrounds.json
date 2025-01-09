@@ -8,15 +8,15 @@
     },
     {
       "id": "bg2",
-      "previewSize": "300",
+      "previewSize": "50",
       "fixed": "true",
-      "themeLight": false
+      "themeLight": true
     },
     {
       "id": "bg3",
       "previewSize": "50",
       "fixed": "true",
-      "themeLight": false
+      "themeLight": true
     },
     {
       "id": "bg4",
