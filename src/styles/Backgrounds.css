@@ -3,8 +3,7 @@ html:has(#bg1:checked),
   --size: 50px;
   --color1: #fad4fd;
   --color2: #c7c8ff;
-  background:
-    linear-gradient(25deg, var(--color1) 25%, transparent 25%),
+  background: linear-gradient(25deg, var(--color1) 25%, transparent 25%),
     linear-gradient(-25deg, var(--color1) 25%, transparent 25%),
     linear-gradient(25deg, transparent 75%, var(--color1) 75%) var(--size) 0,
     linear-gradient(-25deg, transparent 75%, var(--color1) 75%) var(--size) 0,
@@ -19,8 +18,7 @@ html:has(#bg2:checked),
   --color1: #97dddf;
   --color2: #6cb9b5;
   --color3: #ececec;
-  background:
-    radial-gradient(var(--color2) 15%, transparent 15%) 0 var(--disp),
+  background: radial-gradient(var(--color2) 15%, transparent 15%) 0 var(--disp),
     radial-gradient(var(--color1) 15%, transparent 15%) 0 calc(var(--disp) * -1),
     radial-gradient(var(--color1) 15%, transparent 15%) var(--disp) 0,
     radial-gradient(var(--color1) 15%, transparent 15%) calc(var(--disp) * -1) 0,
@@ -37,8 +35,7 @@ html:has(#bg3:checked),
   --color3: #ffffe3;
   --top: var(--color2) 13%, var(--color1) 13% 14%, transparent 14%;
   --bottom: transparent 86%, var(--color1) 86% 87%, var(--color2) 87%;
-  background:
-    linear-gradient(30deg, var(--top)) 0 calc(var(--size) / -1.334),
+  background: linear-gradient(30deg, var(--top)) 0 calc(var(--size) / -1.334),
     linear-gradient(-30deg, var(--bottom)) 0 calc(var(--size) / 1.334),
     linear-gradient(30deg, var(--bottom)) 0 calc(var(--size) / 1.334),
     linear-gradient(-30deg, var(--top)) 0 calc(var(--size) / -1.334),
@@ -98,16 +95,15 @@ html:has(#bg4:checked),
     var(--color2) calc(var(--r) + var(--incr) * 14)
       calc(var(--r) + var(--incr) * 15),
     transparent calc(var(--r) + var(--incr) * var(--wv));
-  background:
-    radial-gradient(
+  background: radial-gradient(
         circle at center center,
         var(--color1) calc(var(--r) * 3),
         transparent 0
       )
       calc(var(--size) / 4) calc(var(--size) / 4) / calc(var(--size) / 2)
       calc(var(--size) / 2),
-    radial-gradient(circle at center top, var(--waves)) 0
-      calc(var(--size) / 2) / var(--area),
+    radial-gradient(circle at center top, var(--waves)) 0 calc(var(--size) / 2) /
+      var(--area),
     radial-gradient(circle at center bottom, var(--waves)) calc(var(--size) / 2)
       calc(var(--size) / 2) / var(--area),
     radial-gradient(circle at center top, var(--waves)) 0 0 / var(--area),
@@ -157,8 +153,7 @@ html:has(#bg5:checked),
     var(--color2) calc(var(--r) + var(--incr) * 14)
       calc(var(--r) + var(--incr) * 15),
     transparent calc(var(--r) + var(--incr) * var(--wv));
-  background:
-    radial-gradient(
+  background: radial-gradient(
         circle at center center,
         var(--color1) calc(var(--r) * 5),
         transparent calc(var(--r) * 5)
@@ -195,7 +190,7 @@ html:has(#bg5:checked),
 html:has(#bg6:checked),
 #bg6 {
   --size: 100px;
-  --color1: #7a4900;
+  --color1: #865100;
   --color2: #251200;
   --color3: #302b00;
   --r: 4%; /*radio centers*/
@@ -235,4 +230,83 @@ html:has(#bg6:checked),
     radial-gradient(circle at left top, var(--waves));
   background-color: var(--color1);
   background-size: var(--size) var(--size);
+}
+
+html:has(#bg7:checked),
+#bg7 {
+  --size: 120px;
+  --color1: #850606;
+  --color2: #04296e;
+  --color3: #b47809;
+  --color4: #fff9ea;
+  --top-tr: transparent 87%, var(--color4) 87%;
+  --bottom-tr: var(--color4) 13%, transparent 13%;
+  --top-tr-c: var(--color4) 12%, var(--color1) 12% 14%, transparent 14%;
+  --bottom-tr-c: transparent 86%, var(--color1) 86% 88%, var(--color4) 88%;
+  --intersec: transparent 49%, var(--color2) 49% 51%, transparent 51%;
+  background: radial-gradient(circle, var(--color4) 15%, transparent 15%),
+    radial-gradient(circle, var(--color4) 15%, transparent 15%)
+      calc(var(--size) / 1.33) calc(var(--size) / 2),
+    /* Central Triangle */ linear-gradient(60deg, var(--top-tr))
+      calc(var(--size) / 1.33) 0,
+    linear-gradient(-60deg, var(--top-tr)) calc(var(--size) / 1.33) 0,
+    linear-gradient(-60deg, var(--bottom-tr)) calc(var(--size) / 1.33) 0,
+    linear-gradient(60deg, var(--bottom-tr)) calc(var(--size) / 1.33) 0,
+    /* Triangle Corners */ linear-gradient(60deg, var(--bottom-tr-c)) 0
+      calc(var(--size) / 2),
+    linear-gradient(-60deg, var(--top-tr-c)) 0 calc(var(--size) / 2),
+    linear-gradient(-60deg, var(--bottom-tr-c)) 0 calc(var(--size) / 2),
+    linear-gradient(60deg, var(--top-tr-c)) 0 calc(var(--size) / 2),
+    linear-gradient(60deg, var(--intersec)),
+    linear-gradient(-60deg, var(--intersec)),
+    linear-gradient(
+      var(--color3) 1.5%,
+      transparent 1.5% 48.5%,
+      var(--color3) 48.5% 51.5%,
+      transparent 51.5% 98.5%,
+      var(--color3) 98.5%
+    );
+  background-color: var(--color4);
+  background-size: calc(var(--size) * 1.5) var(--size);
+}
+
+html:has(#bg8:checked),
+#bg8 {
+  --size: 180px;
+  --color1: #dfecff;
+  --color2: #7ea6f0;
+  background: linear-gradient(
+        45deg,
+        transparent 55.5%,
+        var(--color1) 55.5% 61.06%,
+        var(--color2) 61.06% 66.62%,
+        var(--color1) 66.62% 72.18%,
+        var(--color2) 72.18% 77.75%,
+        var(--color1) 77.75% 83.31%,
+        var(--color2) 83.31% 88.87%,
+        var(--color1) 88.87% 94.43%,
+        var(--color2) 94.43% 100%
+      )
+      0 calc(var(--size) / -2),
+    linear-gradient(
+        -45deg,
+        var(--color1) 5.56%,
+        var(--color2) 5.56% 11.12%,
+        var(--color1) 11.12% 16.68%,
+        var(--color2) 16.68% 22.25%,
+        var(--color1) 22.25% 27.81%,
+        var(--color2) 27.81% 33.37%,
+        var(--color1) 33.37% 38.93%,
+        var(--color2) 38.93% 44.5%,
+        var(--color1) 44.5% 50.06%,
+        transparent 50.06%
+      )
+      0 calc(var(--size) / 1.6),
+    repeating-linear-gradient(
+      45deg,
+      var(--color1) 0 calc((var(--size) / 5.66) / 2),
+      var(--color2) calc((var(--size) / 5.66) / 2) calc(var(--size) / 5.66)
+    );
+  background-color: var(--color1);
+  background-size: var(--size) calc(var(--size) * 1.25);
 }

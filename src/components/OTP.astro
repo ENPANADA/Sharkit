@@ -44,64 +44,6 @@ import { ButtonPromise } from "@lib/Toasts";
     box-sizing: border-box;
     box-shadow: rgb(var(--bg-dark)) 6px 6px 12px;
 
-    h2,
-    h3 {
-      margin: 0;
-      font-size: 1.3rem;
-      align-self: center;
-      font-family: 'Raleway', monospace;
-      transition: color 0.2s;
-    }
-
-    h2 {
-      text-shadow: 3px 3px 4px rgb(var(--accent));
-    }
-
-    h3 {
-      font-size: 20px;
-      max-width: 100%;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
-
-    p {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    span {
-      margin: 0;
-      font-size: 0.92rem;
-      align-self: center;
-    }
-
-    strong,
-    h2:hover,
-    h3:hover {
-      color: rgb(var(--accent-light));
-    }
-
-    button {
-      padding: 0.5rem 0.6rem;
-      border-radius: 0.5rem;
-      border: solid 0.1rem rgb(var(--accent));
-      font-size: 0.9rem;
-      color: inherit;
-      background-color: rgb(var(--accent-dark));
-      align-self: end;
-      cursor: pointer;
-      transition:
-        border-color 0.2s ease,
-        color 0.2s ease;
-
-      &:hover,
-      &:focus {
-        border-color: rgb(var(--accent-light));
-        color: rgb(var(--accent-light));
-        outline: none;
-      }
-    }
-
     button[type="button"] {
       background-color: transparent;
       text-decoration: underline;
@@ -120,6 +62,67 @@ import { ButtonPromise } from "@lib/Toasts";
       &:focus-visible {
         outline: 1px solid rgb(var(--accent));
       }
+    }
+  }
+
+  h2,
+  h3 {
+    margin: 0;
+    align-self: center;
+    font-family: "Raleway", monospace;
+    transition: color 0.2s;
+  }
+
+  h2 {
+    font-size: 22px;
+    text-shadow: 3px 3px 4px rgb(var(--accent));
+  }
+
+  h3 {
+    font-size: 20px;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    background: var(--lg);
+    background-clip: text;
+    color: transparent;
+  }
+
+  p {
+    margin: 0;
+    font-size: 1rem;
+  }
+
+  span {
+    margin: 0;
+    font-size: 0.92rem;
+    align-self: center;
+  }
+
+  strong,
+  h2:hover,
+  h3:hover {
+    color: rgb(var(--accent-light));
+  }
+
+  button {
+    padding: 0.5rem 0.6rem;
+    border-radius: 0.5rem;
+    border: solid 0.1rem rgb(var(--accent));
+    font-size: 0.9rem;
+    color: inherit;
+    background-color: rgb(var(--accent-dark));
+    align-self: end;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease;
+
+    &:hover,
+    &:focus {
+      border-color: rgb(var(--accent-light));
+      color: rgb(var(--accent-light));
+      outline: none;
     }
   }
 </style>

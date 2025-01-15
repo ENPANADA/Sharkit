@@ -41,38 +41,6 @@ const selected = svgToBase64Url(IconSelectedText, { color: COLORS.success });
           </div>
         ))
       }
-      <!-- <div>
-        <input type="radio" name="bg-statics" id="bg1" data-theme-light/>
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" id="bg2" />
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" id="bg3" data-theme-light />
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" id="bg4" />
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" />
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" />
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" />
-        <button>Copy code</button>
-      </div>
-      <div>
-        <input type="radio" name="bg-statics" />
-        <button>Copy code</button>
-      </div> -->
     </section>
   </div>
 </Layout>
@@ -268,15 +236,19 @@ radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%,rgba(255,255,255,0) 
     }
   }
 
-  input[type="checkbox"]:checked {
-    outline-color: rgb(var(--accent-light));
-
-    &::before {
-      left: 55%;
-      border-color: rgb(var(--accent-light));
-      rotate: 0.5turn;
-      background-position: 20%;
-      box-shadow: 0 0 10px 5px rgb(var(--accent));
+  label:has(input[type="checkbox"]:checked) {
+    border-color: rgb(var(--accent-light));
+    
+    input{
+      outline-color: rgb(var(--accent-light));
+      
+      &::before {
+        left: 55%;
+        border-color: rgb(var(--accent-light));
+        rotate: 0.5turn;
+        background-position: 20%;
+        box-shadow: 0 0 10px 5px rgb(var(--accent));
+      }
     }
   }
 
