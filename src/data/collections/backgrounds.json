@@ -47,6 +47,12 @@
       "previewSize": "80",
       "fixed": "true",
       "themeLight": true
+    },
+    {
+      "id": "bg9",
+      "previewSize": "50",
+      "fixed": "true",
+      "themeLight": false
     }
   ],
   "dynamic": []

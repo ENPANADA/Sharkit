@@ -310,3 +310,48 @@ html:has(#bg8:checked),
   background-color: var(--color1);
   background-size: var(--size) calc(var(--size) * 1.25);
 }
+
+html:has(#bg9:checked),
+#bg9 {
+  --size: 100px;
+  --color1: #38003a;
+  --color2: #530068;
+  --color3: #5f005f;
+  --color4: #0e0033;
+  --dgn: transparent 16%, var(--color4) 16% 17.35%, var(--color1) 17.35% 32.7%,
+    var(--color4) 32.7% 34%, transparent 34%;
+  --rhoC: transparent 82.63%, var(--color4) 82.63% 83.98%, var(--color3) 83.98%; /* Central-Rhombus */
+  --rhoL: var(--color2) 16.02%, var(--color4) 16.02% 17.37%, transparent 17.37%; /* Lateral-Rhombus */
+  --fix-tr1: transparent 82.63%, var(--color4) 82.63% 83.98%,
+    var(--color1) 83.98% 99.35%, var(--color4) 99.35%;
+  --fix-tr2: transparent 83.1%, var(--color1) 83.1%;
+  background: linear-gradient(45deg, var(--fix-tr1)) calc(var(--size) / 2)
+      calc(var(--size) / 2),
+    linear-gradient(-45deg, var(--fix-tr1)) calc(var(--size) / -2)
+      calc(var(--size) / 2),
+    linear-gradient(-45deg, var(--rhoC)) 0 calc(var(--size) / -2),
+    linear-gradient(45deg, var(--rhoC)) 0 calc(var(--size) / -2),
+    linear-gradient(
+      to right,
+      var(--color4) 1%,
+      transparent 1% 99%,
+      var(--color4) 99%
+    ),
+    linear-gradient(45deg, var(--fix-tr2)) calc(var(--size) / 2.08) 0,
+    linear-gradient(-45deg, var(--fix-tr2)) calc(var(--size) / -2.08) 0,
+    linear-gradient(45deg, var(--dgn)), linear-gradient(-45deg, var(--dgn)),
+    linear-gradient(45deg, var(--rhoL)) calc(var(--size) / 1) 0,
+    linear-gradient(-45deg, var(--rhoL)) calc(var(--size) / -1) 0,
+    linear-gradient(
+      to right,
+      transparent 24%,
+      var(--color4) 24% 26%,
+      transparent 26% 49%,
+      var(--color4) 49% 51%,
+      transparent 51% 74%,
+      var(--color4) 74% 76%,
+      transparent 76%
+    );
+  background-color: var(--color1);
+  background-size: calc(var(--size) * 2) var(--size);
+}
