@@ -3,7 +3,7 @@ import Layout from "@layouts/App.astro";
 import Footer from "@components/Footer.astro";
 import { IconSharKit, IconArrowRight, Wave } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
-import { HOME_COMPONENT_URL } from "@config/routes";
+import { HOME_URL } from "@config/routes";
 import { COLORS } from "@config/global";
 
 const wave = svgToBase64Url(Wave, { fill: COLORS.accent });
@@ -22,7 +22,7 @@ const wave = svgToBase64Url(Wave, { fill: COLORS.accent });
           >without external libraries</span
         >.
       </p>
-      <a href={HOME_COMPONENT_URL}>Get started<IconArrowRight fill="none" /></a>
+      <a href={HOME_URL}>Get started<IconArrowRight fill="none" /></a>
     </figure>
   </section>
   <main>
