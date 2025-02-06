@@ -1,0 +1,209 @@
+---
+import Layout from "@layouts/App.astro";
+import Logo from "@components/Logo.astro";
+import { getGalleryCoverByName as Cover } from "@lib/Covers";
+import { COMPONENT_URL, HOME_BACKGROUND_URL} from "@config/routes";
+---
+
+<Layout>
+  <header>
+    <Logo />
+  </header>
+  <main>
+    <h2>Collections</h2>
+    <section>
+      <a href={COMPONENT_URL}
+        ><h3>Components</h3>
+        <Cover id="component" />
+      </a>
+      <a href={HOME_BACKGROUND_URL}><h3>Backgrounds</h3></a>
+      <a
+        ><h3>Coming soon</h3>
+        <Cover id="" />
+      </a>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  header {
+    margin: 80px 0;
+    display: flex;
+    justify-content: center;
+    div {
+      scale: 2.5;
+    }
+  }
+
+  main {
+    margin: auto;
+    padding: 15px;
+    width: 100%;
+    max-width: var(--max-width-content);
+    box-sizing: border-box;
+  }
+
+  h2 {
+    font-family: "Raleway";
+    font-weight: normal;
+    font-size: 30px;
+    letter-spacing: -2px;
+  }
+  
+  section {
+    height: 400px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  
+  section:has(a:hover) a:not(:hover) {
+    filter: blur(5px) brightness(0.5);
+  }
+  
+  a {
+    border-radius: 10px;
+    padding: 10px;
+    font-family: "Raleway";
+    position: relative;
+    display: inline-flex;
+    box-shadow: 0 0 2px rgb(var(--accent-light));
+    color: rgb(var(--accent-light));
+    min-height: 190px;
+    transition:
+      scale 0.2s,
+      filter 0.2s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      background: linear-gradient(
+        transparent 50%,
+        rgb(var(--bg-dark) / 70%) 95%
+      );
+    }
+
+    &:first-of-type{
+      grid-column: 1 / span 2;
+      background: linear-gradient(
+          to right bottom,
+          rgb(var(--accent-dark)) 10%,
+          rgb(var(--bg-dark)),
+          rgb(var(--accent-dark)) 80%
+        );
+
+      svg {
+        circle {
+          animation: 5s infinite linear;
+        }
+        g {
+          animation: 1s infinite alternate ease-in;
+          &:nth-of-type(2) {
+            animation-delay: 0.6s;
+          }
+          &:nth-of-type(3) {
+            animation-delay: 1.2s;
+          }
+        }
+      }
+
+      &:hover {
+        svg {
+          circle {
+            animation-name: rotate;
+          }
+          g {
+            animation-name: pulse;
+          }
+        }
+      }
+    }
+
+    &:nth-of-type(2) {
+      grid-column: 1 / span 2;
+      background:
+        linear-gradient(48deg, rgb(var(--bg-light)) 28%, transparent 28%),
+        linear-gradient(28deg, rgb(var(--accent-light)) 50%, transparent 50%),
+        linear-gradient(
+            transparent 48%,
+            rgb(var(--accent-light)) 48% 52%,
+            transparent 52%
+          )
+          0 0 / 45px 45px,
+        linear-gradient(
+            to right,
+            transparent 48%,
+            rgb(var(--accent-light)) 48% 52%,
+            transparent 52%
+          )
+          0 0 / 45px 45px,
+        linear-gradient(
+          to right,
+          rgb(var(--bg-dark)),
+          rgb(var(--accent-secondary))
+        );
+      animation: 8s infinite linear;
+
+      &:hover {
+        animation-name: move-background;
+      }
+    }
+
+    &:nth-of-type(3) {
+      grid-column: 3;
+      grid-row: 1 / span 2;
+      --aa: rgb(var(--accent-secondary));
+      background: 
+      radial-gradient(circle, var(--aa), transparent),
+      radial-gradient(
+        circle,
+        rgb(var(--accent-secondary)) 35%,
+        rgb(var(--accent)) 50%,
+        rgb(var(--accent-dark)) 65%,
+        rgb(var(--bg-dark)) 85%
+      );
+
+      &:hover{
+        --aa: rgb(var(--bg-dark));
+      }
+    }
+
+    h3 {
+      margin: 12px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: inherit;
+    }
+
+    &:hover {
+      scale: 1.02;
+    }
+  }
+
+  @keyframes move-background {
+    to {
+      background-position:
+        0 0,
+        0 0,
+        90px -45px,
+        90px -45px,
+        0 0;
+    }
+  }
+
+  @keyframes pulse {
+    to {
+      translate: 8px 4px;
+      scale: 0.98;
+    }
+  }
+
+  @keyframes rotate {
+    to {
+      stroke-dashoffset: 95;
+    }
+  }
+</style>
