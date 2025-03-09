@@ -2,7 +2,13 @@
 import { IconGitHub, Wave } from "@lib/Icons";
 import { svgToBase64Url } from "@utils/IconsService";
 import { COLORS } from "@config/global";
-import { HOME_URL, ENPANADA_URL, HOME_COMPONENT_URL, HOME_BACKGROUND_URL, REPO_URL } from "@config/routes";
+import {
+  HOME_URL,
+  ENPANADA_URL,
+  HOME_COMPONENT_URL,
+  HOME_BACKGROUND_URL,
+  REPO_URL,
+} from "@config/routes";
 
 const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
 ---
@@ -107,6 +113,27 @@ const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
     font-size: 15px;
     color: rgb(var(--font-secondary-color));
     gap: 4px;
+    a {
+      background: var(--lg7);
+      background-clip: text;
+      color: transparent;
+
+      svg {
+        stroke: rgb(var(--accent));
+        transition:
+        stroke 0.2s,
+        fill 0.2s;
+      }
+      
+      &:hover {
+        color: rgb(var(--accent-secondary));
+        
+        svg {
+          stroke: rgb(var(--accent-secondary));
+          fill: rgb(var(--accent-dark));
+        }
+      }
+    }
   }
 
   a {
@@ -116,14 +143,6 @@ const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
     text-decoration: none;
     color: inherit;
     transition: color 0.2s ease-out;
-
-    svg {
-      transition: color;
-    }
-
-    &:hover {
-      color: rgb(var(--accent-secondary));
-    }
   }
 
   section:last-of-type {
@@ -148,42 +167,43 @@ const wave = svgToBase64Url(Wave, { fill: COLORS.bgDark });
       display: inline-block;
       color: inherit;
       text-decoration: none;
-      margin-block: 3px;
-      padding: 2px 5px;
+      margin-block: 2px;
+      padding: 3px 6px;
       font-size: 13px;
       letter-spacing: 2px;
       position: relative;
+      border-top-left-radius: 5px;
       transition: background-color 0.2s ease-out;
 
       &::before {
         content: "";
         background-color: rgb(var(--accent-light));
         position: absolute;
-        inset-inline: 100% 0;
-        top: 0;
-        height: 1px;
-        transition: left 0.2s;
+        inset-block: 100% 0;
+        right: 0;
+        width: 1px;
+        transition: top 0.2s;
       }
 
       &::after {
         content: "";
         background-color: rgb(var(--accent-light));
         position: absolute;
-        inset-inline: 0 100%;
+        inset-inline: 100% 0;
         bottom: 0;
         height: 1px;
-        transition: right 0.2s;
+        transition: left 0.2s;
       }
 
       &:hover {
-        background-color: rgb(var(--accent-dark));
+        background-color: rgb(var(--accent-secondary) / 50%);
 
         &::before {
-          left: 0;
+          top: 0;
         }
 
         &::after {
-          right: 0;
+          left: 0;
         }
       }
     }

@@ -141,7 +141,7 @@ import {
   menu {
     visibility: hidden;
     margin: 0;
-    padding: 10px;
+    padding: 12px;
     position: absolute;
     top: calc(100% + var(--height-align));
     right: 0;
@@ -150,7 +150,7 @@ import {
     gap: 5px;
     background-color: rgb(var(--bg-dark));
     box-shadow: inset 0 0 0 1px rgb(var(--accent-light));
-    border-radius: 10px;
+    border-radius: 6px;
     transition: visibility 1s;
 
     a {
@@ -158,18 +158,18 @@ import {
       letter-spacing: 1px;
       font-weight: 300;
       border-radius: 5px;
-      border: 2px solid rgb(var(--accent-dark));
-      background-color: rgb(var(--bg));
+      background-color: rgb(var(--accent-dark) / 60%);
       position: relative;
       z-index: 1;
-
+      
       &::before {
         content: "";
         position: absolute;
         inset: 0;
         right: 100%;
-        border-radius: inherit;
+        border: 1px solid rgb(var(--accent-secondary));
         background-color: rgb(var(--accent-secondary));
+        border-radius: inherit;
         z-index: -1;
         transition: inset 0.8s;
       }
